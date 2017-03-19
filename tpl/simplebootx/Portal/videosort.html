@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$post_title} {$site_name} </title>
+		<meta name="keywords" content="{$post_keywords}" />
+		<meta name="description" content="{$post_excerpt}">
+		<tc_include file="Public:head" />
+		<style>
+			.clearboth:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+			#article_content img{height:auto !important}
+			#top_title{
+				text-align: center;
+				font-style: #875b36;
+			}
+			.top10>.content{
+				float: left;
+/* 				width: 50%; */
+			
+				margin: 0px auto;
+			}
+			.top10>.left_side{
+				width: 24%;
+				height: 100%;
+				float: left;
+			}
+			.top10>.right_side{
+				width: 24%;
+				height: 100%;
+				float: right;
+			}
+			.top10>.content>h1{
+				text-shadow: 1px 1px 3px #875b36;
+				padding:10px 0px;
+				background-color:#232427;
+				box-shadow: 0px 0px 3px #5c5c76;
+			}
+			.top10>.content>.rankbox{
+
+				height: 200px;
+				background-color:#232427;
+				box-shadow: 0px 0px 3px #5c5c76;
+				margin-top: 5px;
+				transition: all 1s ease ;
+				backface-visibility:visible;
+			}
+
+			.rankbox:hover{
+				-webkit-transform-style:preserve-3d;
+				transform: rotateX(360deg);
+			}
+			.ranknum{
+				margin-top: 25px;
+				margin-left: 10px;
+				border-radius: 50%;
+				width:150px;
+				height:150px;
+				float: left;
+				line-height: 150px;
+				text-align: center;
+				font-size: 12px;
+			}
+			.rankbox:nth-of-type(1) .ranknum{
+				background:url(__ROOT__/tpl/simplebootx/Public/images/金牌.png) no-repeat;
+				background-position: center center;	
+			}
+			.rankbox:nth-of-type(2) .ranknum{
+				background:url(__ROOT__/tpl/simplebootx/Public/images/银牌.png) no-repeat;
+				background-position: center center;	
+			}
+			.rankbox:nth-of-type(3) .ranknum{
+				background:url(__ROOT__/tpl/simplebootx/Public/images/铜牌.png) no-repeat;
+				background-position: center center;	
+			}
+
+
+		</style>
+	</head>
+<body class="{$name}">
+<tc_include file="Public:nav" />
+<div class="container tc-main ">
+<!-- 
+ 最火视频
+	<div class="top10 clearboth" >
+		
+		<div class="left_side">
+		<img src="__ROOT__/tpl/simplebootx/Public/images/taisuke.png" alt="" width="300">
+		<img src="__ROOT__/tpl/simplebootx/Public/images/cloud.png" alt="" width="300">
+		</div>
+		<div class="content clearboth">
+			<h1 id="top_title">Top 10</h1>
+			<div class="rankbox">
+				<div class="ranknum">1</div>
+				<div class="rankcontent"></div>
+			</div><div class="rankbox">
+				<div class="ranknum">2</div>
+				<div class="rankcontent"></div>
+			</div><div class="rankbox">
+				<div class="ranknum">3</div>
+				<div class="rankcontent"></div>
+			</div>
+
+		</div>
+		<div class="right_side">
+			<img src="__ROOT__/tpl/simplebootx/Public/images/hong10.png" alt="" width="300">
+			<img src="__ROOT__/tpl/simplebootx/Public/images/lilou.png" alt="" width="300">
+		</div>
+	</div>
+ -->
+
+<div id="container">
+	<!-- 最火视频显示模块 -->
+	<!-- <div class="best10">
+		<php>
+			$blist = sp_sql_posts_paged("cid:$cat_id;order:post_hits DESC;",10);
+			$bindex =1;
+		</php>
+		<volist name="blist['posts']" id='vo'>
+			<div><a href="{:leuu('Video/index',array('id'=>$vo['tid']))}">这是最火视频{$index}</a></div>
+			<php>$bindex++;</php>
+		</volist>
+	</div>
+	
+	最新视频显示模块
+	<div class="new10">
+		<php>
+			$blist = sp_sql_posts_paged("cid:$cat_id;order:post_modified DESC;");
+			$nindex =1;
+		</php>
+		<volist name="blist['posts']" id='vo'>
+			<div><a href="{:leuu('Video/index',array('id'=>$vo['tid']))}">这是新视频{$nindex}</a></div>
+			<php>$nindex++;</php>
+		</volist>
+	</div> -->
+
+
+		<!-- 展示框 -->
+ <div class="showcase">
+		<div class="showbox">
+			<php>
+				$alist = sp_sql_posts("cid:$cat_id;limit:0,2;order:post_modified DESC;");
+				$nindex =1;
+			</php>
+			<volist name="alist" id='vo'>
+				<div><a href="{:leuu('Video/index',array('id'=>$vo['tid']))}">这是新视频{$vo['tid']}</a></div>
+			</volist>
+		</div>
+		<div class="new"></div>
+		<input type="button" value="加载更多" class="addmore">
+	</div>
+
+</div>
+
+</div>
+<tc_include file="Public:Jfooter"/>
+<tc_include file="Public:scripts"/>
+</body>
+<script>
+	var showindex = 0;
+	var showbox = $('.showbox');
+	
+	$(function(){	
+	 	if(!showbox.is(':empty')){
+			showindex=2;
+		 }		
+	});
+	/* 解析json数据 */
+	function toJson(str){
+		var json = eval('('+str+')');
+		return json;
+	} 	
+	$(".addmore").bind('click',function(){
+		$.ajax({
+			type:'post',
+			url:'VideoSort/add/id/{$cat_id}',
+			data:{showindex:showindex},
+			success:function(re){
+				var data = toJson(re);
+				for(var i = 0;i<data.length;i++){
+					var tid = data[i].tid;
+					var str ='<div><a href="Video/index/id/'+tid+'">视频'+data[i].tid+'</a></div>';
+					showbox.append(str);
+				}
+				showindex+=2;
+			}
+		});
+	});
+</script> 
+</html>
