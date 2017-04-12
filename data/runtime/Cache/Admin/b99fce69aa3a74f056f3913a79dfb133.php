@@ -10,15 +10,15 @@
 <meta name="description" content="This is page-header (.page-header &gt; h1)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="/Hiphoplife/statics/simpleboot/themes/<?php echo C('SP_ADMIN_STYLE');?>/theme.min.css" rel="stylesheet">
-<link href="/Hiphoplife/statics/simpleboot/css/simplebootadmin.css" rel="stylesheet">
-<link href="/Hiphoplife/statics/simpleboot/font-awesome/4.2.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+<link href="/hiphoplife/statics/simpleboot/themes/<?php echo C('SP_ADMIN_STYLE');?>/theme.min.css" rel="stylesheet">
+<link href="/hiphoplife/statics/simpleboot/css/simplebootadmin.css" rel="stylesheet">
+<link href="/hiphoplife/statics/simpleboot/font-awesome/4.2.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
 <!--[if IE 7]>
-	<link rel="stylesheet" href="/Hiphoplife/statics/simpleboot/font-awesome/4.2.0/css/font-awesome-ie7.min.css">
+	<link rel="stylesheet" href="/hiphoplife/statics/simpleboot/font-awesome/4.2.0/css/font-awesome-ie7.min.css">
 <![endif]-->
-<link rel="stylesheet" href="/Hiphoplife/statics/simpleboot/themes/<?php echo C('SP_ADMIN_STYLE');?>/simplebootadminindex.min.css?">
+<link rel="stylesheet" href="/hiphoplife/statics/simpleboot/themes/<?php echo C('SP_ADMIN_STYLE');?>/simplebootadminindex.min.css?">
 <!--[if lte IE 8]>
-	<link rel="stylesheet" href="/Hiphoplife/statics/simpleboot/css/simplebootadminindex-ie.css?" />
+	<link rel="stylesheet" href="/hiphoplife/statics/simpleboot/css/simplebootadminindex-ie.css?" />
 <![endif]-->
 <style>
 .navbar .nav_shortcuts .btn{margin-top: 5px;}
@@ -38,7 +38,7 @@
 //全局变量
 var GV = {
 	HOST:"<?php echo ($_SERVER['HTTP_HOST']); ?>",
-    DIMAUB: "/Hiphoplife/",
+    DIMAUB: "/hiphoplife/",
     JS_ROOT: "statics/js/",
     TOKEN: ""
 };
@@ -126,14 +126,14 @@ right: initial !important;}
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a href="/Hiphoplife/index.php?g=admin&m=index&a=index" class="brand"> <small> 
-				<img src="/Hiphoplife/statics/images/icon/logo-18.png">
+				<a href="/hiphoplife/index.php?g=admin&m=index&a=index" class="brand"> <small> 
+				<img src="/hiphoplife/statics/images/icon/logo-18.png">
 						Hiphoplife 后台
 				</small>
 				</a>
 				<div class="pull-left nav_shortcuts" >
 					
-					<a class="btn btn-small btn-warning" href="/Hiphoplife/" title="前台首页" target="_blank">
+					<a class="btn btn-small btn-warning" href="/hiphoplife/" title="前台首页" target="_blank">
 						<i class="fa fa-home"></i>
 					</a>
 					
@@ -152,7 +152,7 @@ right: initial !important;}
 				<ul class="nav simplewind-nav pull-right">
 					<li class="light-blue">
 						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-							<img class="nav-user-photo" src="/Hiphoplife/statics/images/icon/logo-18.png" alt="<?php echo ($admin["user_login"]); ?>">
+							<img class="nav-user-photo" src="/hiphoplife/statics/images/icon/logo-18.png" alt="<?php echo ($admin["user_login"]); ?>">
 							<span class="user-info">
 								<small>欢迎,</small><?php echo ((isset($admin["user_nicename"]) && ($admin["user_nicename"] !== ""))?($admin["user_nicename"]):$admin[user_login]); ?>
 							</span>
@@ -201,8 +201,8 @@ right: initial !important;}
 		</div>
 	</div>
 	
-	<script src="/Hiphoplife/statics/js/jquery.js"></script>
-	<script src="/Hiphoplife/statics/simpleboot/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/hiphoplife/statics/js/jquery.js"></script>
+	<script src="/hiphoplife/statics/simpleboot/bootstrap/js/bootstrap.min.js"></script>
 	<script>
 	var ismenumin = $("#sidebar").hasClass("menu-min");
 	$(".nav-list").on( "click",function(event) {
@@ -238,7 +238,7 @@ right: initial !important;}
 		return false;
 	});
 	</script>
-	<script src="/Hiphoplife/tpl_admin/simpleboot/assets/js/index.js"></script>
+	<script src="/hiphoplife/tpl_admin/simpleboot/assets/js/index.js"></script>
 
 
 
