@@ -60,16 +60,16 @@ var GV = {
 								<b class="arrow fa fa-angle-right normal"></b>
 								<i class="fa fa-reply back"></i>
 								<span class="menu-text back">返回</span>
-								
+
 							</a>
-							
+
 							<ul  class="submenu">
 									<php>getsubmenu1((array)$menu->items)</php>
-							</ul>	
+							</ul>
 						<php>}</php>
-						
+
 					</li>
-					
+
 				<php>}</php>
 <php>}</php>
 
@@ -89,7 +89,7 @@ var GV = {
 							</a>
 							<ul  class="submenu">
 									<php>getsubmenu2((array)$menu->items)</php>
-							</ul>	
+							</ul>
 						<php>}</php>
 						
 					</li>
@@ -143,8 +143,16 @@ right: initial !important;}
 					<a class="btn btn-small btn-success" href="javascript:openapp('{:U('portal/AdminTerm/index')}','index_termlist','分类管理');" title="分类管理">
 						<i class="fa fa-th"></i>
 					</a>
+					<if condition="sp_auth_check(sp_get_current_admin_id(),'Content/AdminVideoManage/index')">
+					<a class="btn btn-small btn-info" href="javascript:openapp('{:U('content/AdminVideoManage/index')}','index_video','视频管理');" title="视频管理">
+						<i class="fa fa-film"></i>
+					</a>
 					</if>
-					
+					<if condition="sp_auth_check(sp_get_current_admin_id(),'Content/AdminMusicManage/index')">
+					<a class="btn btn-small btn-info" href="javascript:openapp('{:U('content/AdminMusicManage/index')}','index_music','音乐管理');" title="音乐管理">
+						<i class="fa fa-music"></i>
+					</a>
+					</if>
 					<if condition="sp_auth_check(sp_get_current_admin_id(),'portal/AdminPost/index')">
 					<a class="btn btn-small btn-info" href="javascript:openapp('{:U('portal/AdminPost/index')}','index_postlist','文章管理');" title="文章管理">
 						<i class="fa fa-pencil"></i>
