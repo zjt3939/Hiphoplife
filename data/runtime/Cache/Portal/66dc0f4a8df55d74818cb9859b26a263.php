@@ -20,16 +20,16 @@
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
-	<link rel="icon" href="/hiphoplife/tpl/simplebootx/Public/images/favicon.ico" type="image/x-icon">
-	<link rel="shortcut icon" href="/hiphoplife/tpl/simplebootx/Public/images/favicon.ico" type="image/x-icon">
-    <link href="/hiphoplife/tpl/simplebootx/Public/simpleboot/themes/cmf/theme.min.css" rel="stylesheet">
-    <link href="/hiphoplife/tpl/simplebootx/Public/simpleboot/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="/hiphoplife/tpl/simplebootx/Public/simpleboot/font-awesome/4.2.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+	<link rel="icon" href="/HiphopLife/tpl/simplebootx/Public/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="/HiphopLife/tpl/simplebootx/Public/images/favicon.ico" type="image/x-icon">
+    <link href="/HiphopLife/tpl/simplebootx/Public/simpleboot/themes/cmf/theme.min.css" rel="stylesheet">
+    <link href="/HiphopLife/tpl/simplebootx/Public/simpleboot/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/HiphopLife/tpl/simplebootx/Public/simpleboot/font-awesome/4.2.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css">
 	<!--[if IE 7]>
-	<link rel="stylesheet" href="/hiphoplife/tpl/simplebootx/Public/simpleboot/font-awesome/4.2.0/css/font-awesome-ie7.min.css">
+	<link rel="stylesheet" href="/HiphopLife/tpl/simplebootx/Public/simpleboot/font-awesome/4.2.0/css/font-awesome-ie7.min.css">
 	<![endif]-->
-	<link href="/hiphoplife/tpl/simplebootx/Public/css/style.css" rel="stylesheet">
-	<link rel="stylesheet" href="/hiphoplife/tpl/simplebootx/Public/css/nav.css">	<link rel="stylesheet" href="/hiphoplife/tpl/simplebootx/Public/css/nav.css">
+	<link href="/HiphopLife/tpl/simplebootx/Public/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="/HiphopLife/tpl/simplebootx/Public/css/nav.css">	<link rel="stylesheet" href="/HiphopLife/tpl/simplebootx/Public/css/nav.css">
 	<style>
 		/*html{filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);-webkit-filter: grayscale(1);}*/
 		#backtotop{position: fixed;bottom: 50px;right:20px;display: none;cursor: pointer;font-size: 50px;z-index: 9999;}
@@ -39,9 +39,11 @@
 	
 		<style>
 			#article_content img{height:auto !important}
+			#article_content {word-wrap: break-word;}
+    		.btn {margin-top: 33px;}
 		</style>
 	</head>
-<body class="body-white">
+<body class="">
 <?php echo hook('body_start');?>
 <div class="navbar navbar-fixed-top" >
    <div class="navbar-inner">
@@ -51,7 +53,7 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
        </a>
-       <a class="brand" href="/hiphoplife/"><img src="/hiphoplife/tpl/simplebootx/Public/images/logo.png"/></a>
+       <a class="brand" href="/HiphopLife/"><img src="/HiphopLife/tpl/simplebootx/Public/images/logo.png"/></a>
        <div class="nav-collapse collapse" id="main-menu">
        	<?php
  $effected_id=""; $filetpl="<a href='\$href' target='\$target'>\$label</a>"; $foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' data-toggle='dropdown'>\$label <b class='caret'></b></a>"; $ul_class="dropdown-menu" ; $li_class="" ; $style="nav"; $showlevel=6; $dropdown='dropdown'; echo sp_get_menu("main",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown); ?>
@@ -59,7 +61,7 @@
 		<ul class="nav pull-right" id="main-menu-user">
 			<li class="dropdown user login">
 	            <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
-	            <img src="/hiphoplife/tpl/simplebootx//Public/images/headicon.png" class="headicon"/>
+	            <img src="/HiphopLife/tpl/simplebootx//Public/images/headicon.png" class="headicon"/>
 	            <span class="user-nicename"></span><b class="caret"></b></a>
 	            <ul class="dropdown-menu pull-right">
 	               <li><a href="<?php echo u('user/center/index');?>"><i class="fa fa-user"></i> &nbsp;个人中心</a></li>
@@ -69,7 +71,7 @@
           	</li>
           	<li class="dropdown user offline">
 	            <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
-	           		<img src="/hiphoplife/tpl/simplebootx//Public/images/headicon.png" class="headicon"/>登录<b class="caret"></b>
+	           		<img src="/HiphopLife/tpl/simplebootx//Public/images/headicon.png" class="headicon"/>登录<b class="caret"></b>
 	            </a>
 	            <ul class="dropdown-menu pull-right">
 	               <li><a href="<?php echo U('api/oauth/login',array('type'=>'sina'));?>"><i class="fa fa-weibo"></i> &nbsp;微博登录</a></li>
@@ -93,16 +95,58 @@
 <div class="container tc-main">
 	<div class="row">
 		<div class="span9">
-
+			
 			<div class="tc-box first-box article-box">
 		    	<h2><?php echo ($post_title); ?></h2>
+		    	<div class="article-infobox">
+		    		<span><?php echo ($post_date); ?> by <?php echo ((isset($user_nicename) && ($user_nicename !== ""))?($user_nicename):$user_login); ?></span>
+		    		<span>
+		    			<a href="javascript:;"><i class="fa fa-eye"></i><span><?php echo ($post_hits); ?></span></a>
+						<a href="<?php echo U('article/do_like',array('id'=>$object_id));?>" class="J_count_btn"><i class="fa fa-thumbs-up"></i><span class="count"><?php echo ($post_like); ?></span></a>
+						<a href="<?php echo U('user/favorite/do_favorite',array('id'=>$object_id));?>" class="J_favorite_btn" data-title="<?php echo ($post_title); ?>" data-url="<?php echo U('article/index',array('id'=>$tid));?>" data-key="<?php echo sp_get_favorite_key('posts',$object_id);?>">
+							<i class="fa fa-star-o"></i>
+						</a>
+					</span>
+		    	</div>
 		    	<hr>
-		    	<iframe src="<?php echo ($post_content); ?>"  allowtransparency="true" scrolling="no" border="0" style="width:100%;height:498px;" frameborder="0"></iframe>
-
-		    <?php echo Comments("posts",$id);?>
+		    	<div id="article_content">
+		    	<?php echo ($post_content); ?>
+		    	</div>
+                <?php if(!empty($post_source)): ?><div>
+                        <b>注：本文转载自<?php echo ($post_source); ?>，转载目的在于传递更多信息，并不代表本网赞同其观点和对其真实性负责。如有侵权行为，请联系我们，我们会及时删除。</b>
+                    </div><?php endif; ?>
+		    	<div>
+					<?php if(!empty($prev)): ?><a href="<?php echo U('article/index',array('id'=>$prev['tid']));?>" class="btn btn-primary pull-left">上一篇</a><?php endif; ?>
+					<?php if(!empty($next)): ?><a href="<?php echo U('article/index',array('id'=>$next['tid']));?>" class="btn btn-warning pull-right">下一篇</a><?php endif; ?>
+    	            <script type="text/javascript" src="/HiphopLife/tpl/simplebootx/Public/js/qrcode.min.js"></script>
+                    <div id="qrcode" style="width: 100px;margin:0 auto"></div>
+    					<script type="text/javascript">
+                        var qrcode = new QRCode(document.getElementById("qrcode"), {
+                        width : 100,
+                        height : 100
+                        });
+                        function makeCode () {		
+                        qrcode.makeCode("http://<?php echo ($_SERVER['HTTP_HOST']); echo ($_SERVER['REQUEST_URI']); ?>");
+                        }
+                        makeCode();
+                        </script>
+					<div class="clearfix"></div>
+				</div>
+		    	
+		    	<?php echo Comments("posts",$object_id);?>
 		    </div>
 		    
-		</div>c
+		    <?php $ad=sp_getad("portal_article_bottom"); ?>
+			<?php if(!empty($ad)): ?><div class="tc-box">
+	        	<div class="headtitle">
+	        		<h2>赞助商</h2>
+	        	</div>
+	        	<div>
+		        	<?php echo ($ad); ?>
+		        </div>
+			</div><?php endif; ?>
+		    
+		</div>
 		<div class="span3">
 			<div class="tc-box first-box">
 				<div class="headtitle">
@@ -114,7 +158,7 @@
         	
         	<div class="tc-box">
 	        	<div class="headtitle">
-	        		<h2>热门视频</h2>
+	        		<h2>热门文章</h2>
 	        	</div>
 	        	<div class="ranking">
 	        		<?php $hot_articles=sp_sql_posts("cid:$portal_index_lastnews;field:post_title,post_excerpt,tid,smeta;order:post_hits desc;limit:5;"); ?>
@@ -125,15 +169,19 @@
 				</div>
 			</div>
 			
-			<?php $ad=sp_getad("portal_page_right_aside"); ?>
-			<?php if(!empty($ad)): ?><div class="tc-box">
+			<div class="tc-box">
 	        	<div class="headtitle">
-	        		<h2>赞助商</h2>
+	        		<h2>最新加入</h2>
 	        	</div>
-	        	<div>
-		        	<?php echo ($ad); ?>
-		        </div>
-			</div><?php endif; ?>
+	        	<?php $last_users=sp_get_users("field:*;limit:0,8;order:create_time desc;"); ?>
+	        	<ul class="list-unstyled tc-photos margin-bottom-30">
+	        		<?php if(is_array($last_users)): foreach($last_users as $key=>$vo): ?><li>
+	                    <a href="<?php echo U('user/index/index',array('id'=>$vo['id']));?>">
+	                    <img alt="" src="<?php echo U('user/public/avatar',array('id'=>$vo['id']));?>">
+	                    </a>
+                    </li><?php endforeach; endif; ?>
+                </ul>
+			</div>
 			
 			<div class="tc-box">
 	        	<div class="headtitle">
@@ -145,7 +193,7 @@
 	                        <i class="fa fa-comment"></i>
 	                        <a href="<?php echo U('user/index/index',array('id'=>$vo['uid']));?>"><?php echo ($vo["full_name"]); ?>:</a>
 	                        <span><?php echo ($vo["content"]); ?></span>
-	                        <a href="/hiphoplife/<?php echo ($vo["url"]); ?>#comment<?php echo ($vo["id"]); ?>">查看原文</a>
+	                        <a href="/HiphopLife/<?php echo ($vo["url"]); ?>#comment<?php echo ($vo["id"]); ?>">查看原文</a>
 	                        <span class="comment-time"><?php echo date('m月d日  H:i',strtotime($vo['createtime']));?></span>
 	                    </div><?php endforeach; endif; ?>
                 </div>
@@ -155,13 +203,12 @@
 		
 	</div>
               
-
 </div>
 	<div class="hip_footer_box">
 			<div class="range">
 				<ul class="footer_contant clearfix">
 					<li>
-						<div class="erwei"><img src="/hiphoplife/tpl/simplebootx/Public/images/erwei.jpg" width="100" height="100" alt="">
+						<div class="erwei"><img src="/HiphopLife/tpl/simplebootx/Public/images/erwei.jpg" width="100" height="100" alt="">
 						</div>
 						<ul>
 							<li>本站微信</li>
@@ -193,7 +240,7 @@
 <script type="text/javascript">
 //全局变量
 var GV = {
-    DIMAUB: "/hiphoplife/",
+    DIMAUB: "/HiphopLife/",
     JS_ROOT: "statics/js/",
     TOKEN: ""
 };
@@ -201,10 +248,10 @@ var GV = {
 <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/hiphoplife/statics/js/jquery.js"></script>
-    <script src="/hiphoplife/statics/js/wind.js"></script>
-    <script src="/hiphoplife/tpl/simplebootx/Public/simpleboot/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/hiphoplife/statics/js/frontend.js"></script>
+    <script src="/HiphopLife/statics/js/jquery.js"></script>
+    <script src="/HiphopLife/statics/js/wind.js"></script>
+    <script src="/HiphopLife/tpl/simplebootx/Public/simpleboot/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/HiphopLife/statics/js/frontend.js"></script>
 	<script>
 	$(function(){
 		$('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
@@ -218,7 +265,7 @@ var GV = {
 		$.post("<?php echo U('user/index/is_login');?>",{},function(data){
 			if(data.status==1){
 				if(data.user.avatar){
-					$("#main-menu-user .headicon").attr("src",data.user.avatar.indexOf("http")==0?data.user.avatar:"/hiphoplife/data/upload/avatar/"+data.user.avatar);
+					$("#main-menu-user .headicon").attr("src",data.user.avatar.indexOf("http")==0?data.user.avatar:"/HiphopLife/data/upload/avatar/"+data.user.avatar);
 				}
 				
 				$("#main-menu-user .user-nicename").text(data.user.user_nicename!=""?data.user.user_nicename:data.user.user_login);

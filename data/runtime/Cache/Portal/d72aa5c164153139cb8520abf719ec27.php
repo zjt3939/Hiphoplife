@@ -1,9 +1,9 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 	<html>
 	<head>
-		<title><?php echo ($post_title); ?> <?php echo ($site_name); ?> </title>
-		<meta name="keywords" content="<?php echo ($post_keywords); ?>" />
-		<meta name="description" content="<?php echo ($post_excerpt); ?>">
+		<title>搜索 <?php echo ($site_name); ?> </title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="">
 			<?php $portal_index_lastnews=2; $portal_hot_articles="1,2"; $portal_last_post="1,2"; $tmpl=sp_get_theme_path(); $default_home_slides=array( array( "slide_name"=>"ThinkCMFX1.6.0发布啦！", "slide_pic"=>$tmpl."Public/images/demo/1.jpg", "slide_url"=>"", ), array( "slide_name"=>"ThinkCMFX1.6.0发布啦！", "slide_pic"=>$tmpl."Public/images/demo/2.jpg", "slide_url"=>"", ), array( "slide_name"=>"ThinkCMFX1.6.0发布啦！", "slide_pic"=>$tmpl."Public/images/demo/3.jpg", "slide_url"=>"", ), ); ?>
 	<meta name="author" content="ThinkCMF">
 	<meta charset="utf-8">
@@ -37,11 +37,8 @@
 		#main-menu-user li.user{display: none}
 	</style>
 	
-		<style>
-			#article_content img{height:auto !important}
-		</style>
 	</head>
-<body class="body-white">
+<body class="">
 <?php echo hook('body_start');?>
 <div class="navbar navbar-fixed-top" >
    <div class="navbar-inner">
@@ -93,16 +90,38 @@
 <div class="container tc-main">
 	<div class="row">
 		<div class="span9">
+			<div class="main-title">
+						<?php $result=sp_sql_posts_paged_bykeyword($keyword,"",20); ?>
+						<h3>'<?php echo ($keyword); ?>' 搜索结果 </h3>
+						<p><?php echo ($result['count']); ?>条结果</p>
+					</div>
+					
+					<?php if(is_array($result['posts'])): $i = 0; $__LIST__ = $result['posts'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; $smeta=json_decode($vo['smeta'], true); ?>
+					
+					<div class="list-boxes">
+						<h2><a href="<?php echo leuu('article/index',array('id'=>$vo['tid']));?>"><?php echo ($vo["post_title"]); ?></a></h2>
+						<p><?php echo ($vo["post_excerpt"]); ?></p>
+						<div>
+							<div class="pull-left">
+								<div class="list-actions">
+								<a href="javascript:;"><i class="fa fa-eye"></i><span><?php echo ($vo["post_hits"]); ?></span></a>
+								<a href="<?php echo U('article/do_like',array('id'=>$vo['object_id']));?>" class="J_count_btn"><i class="fa fa-thumbs-up"></i><span class="count"><?php echo ($vo["post_like"]); ?></span></a>
+								<a href="<?php echo U('user/favorite/do_favorite',array('id'=>$vo['object_id']));?>" class="J_favorite_btn" data-title="<?php echo ($vo["post_title"]); ?>" data-url="<?php echo U('portal/article/index',array('id'=>$vo['tid']));?>" data-key="<?php echo sp_get_favorite_key('posts',$vo['object_id']);?>">
+									<i class="fa fa-star-o"></i>
+								</a>
+								</div>
+							</div>
+							<a class="btn btn-warning pull-right" href="<?php echo leuu('article/index',array('id'=>$vo['tid']));?>">查看更多</a>
+						</div>
+					</div><?php endforeach; endif; else: echo "" ;endif; ?>
+				
+					<div class="pagination">
+							<ul>
+								<?php echo ($result['page']); ?>
+							</ul>
+					</div>
 
-			<div class="tc-box first-box article-box">
-		    	<h2><?php echo ($post_title); ?></h2>
-		    	<hr>
-		    	<iframe src="<?php echo ($post_content); ?>"  allowtransparency="true" scrolling="no" border="0" style="width:100%;height:498px;" frameborder="0"></iframe>
-
-		    <?php echo Comments("posts",$id);?>
-		    </div>
-		    
-		</div>c
+				</div>
 		<div class="span3">
 			<div class="tc-box first-box">
 				<div class="headtitle">
@@ -114,7 +133,7 @@
         	
         	<div class="tc-box">
 	        	<div class="headtitle">
-	        		<h2>热门视频</h2>
+	        		<h2>热门文章</h2>
 	        	</div>
 	        	<div class="ranking">
 	        		<?php $hot_articles=sp_sql_posts("cid:$portal_index_lastnews;field:post_title,post_excerpt,tid,smeta;order:post_hits desc;limit:5;"); ?>
@@ -124,38 +143,11 @@
 					</ul>
 				</div>
 			</div>
-			
-			<?php $ad=sp_getad("portal_page_right_aside"); ?>
-			<?php if(!empty($ad)): ?><div class="tc-box">
-	        	<div class="headtitle">
-	        		<h2>赞助商</h2>
-	        	</div>
-	        	<div>
-		        	<?php echo ($ad); ?>
-		        </div>
-			</div><?php endif; ?>
-			
-			<div class="tc-box">
-	        	<div class="headtitle">
-	        		<h2>最新评论</h2>
-	        	</div>
-	        	<div class="comment-ranking">
-	        		<?php $last_comments=sp_get_comments("field:*;limit:0,5;order:createtime desc;"); ?>
-	        		<?php if(is_array($last_comments)): foreach($last_comments as $key=>$vo): ?><div class="comment-ranking-inner">
-	                        <i class="fa fa-comment"></i>
-	                        <a href="<?php echo U('user/index/index',array('id'=>$vo['uid']));?>"><?php echo ($vo["full_name"]); ?>:</a>
-	                        <span><?php echo ($vo["content"]); ?></span>
-	                        <a href="/hiphoplife/<?php echo ($vo["url"]); ?>#comment<?php echo ($vo["id"]); ?>">查看原文</a>
-	                        <span class="comment-time"><?php echo date('m月d日  H:i',strtotime($vo['createtime']));?></span>
-	                    </div><?php endforeach; endif; ?>
-                </div>
-			</div>
         	
 		</div>
 		
 	</div>
               
-
 </div>
 	<div class="hip_footer_box">
 			<div class="range">

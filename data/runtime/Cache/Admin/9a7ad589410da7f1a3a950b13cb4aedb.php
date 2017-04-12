@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
 		<meta name="renderer" content="webkit|ie-comp|ie-stand">
 		<meta name="robots" content="noindex,nofollow">
-		<link href="/hiphoplife/tpl_admin/simpleboot/assets/css/admin_login.css" rel="stylesheet" />
+		<link href="/Hiphoplife/tpl_admin/simpleboot/assets/css/admin_login.css" rel="stylesheet" />
 		<style>
 			#login_btn_wraper{
 				text-align: center;
@@ -32,7 +32,7 @@
 	</head>
 <body>
 	<div class="wrap">
-		<h1><a href="/hiphoplife">Hiphoplife 后台管理中心</a></h1>
+		<h1><a href="/Hiphoplife">Hiphoplife 后台管理中心</a></h1>
 		<form method="post" name="login" action="<?php echo U('public/dologin');?>" autoComplete="off" class="J_ajaxForm">
 			<div class="login">
 				<ul>
@@ -60,14 +60,14 @@
 
 <script>
 var GV = {
-	DIMAUB: "/hiphoplife/",
+	DIMAUB: "/Hiphoplife/",
 	JS_ROOT: "statics/js/",//js版本号
 	TOKEN : ''	//token ajax全局
 };
 </script>
-<script src="/hiphoplife/statics/js/wind.js"></script>
-<script src="/hiphoplife/statics/js/jquery.js"></script>
-<script type="text/javascript" src="/hiphoplife/statics/js/common.js"></script>
+<script src="/Hiphoplife/statics/js/wind.js"></script>
+<script src="/Hiphoplife/statics/js/jquery.js"></script>
+<script type="text/javascript" src="/Hiphoplife/statics/js/common.js"></script>
 <script>
 ;(function(){
 	document.getElementById('J_admin_name').focus();
