@@ -150,6 +150,21 @@ right: initial !important;}
 						<i class="fa fa-pencil"></i>
 					</a>
 					</if>
+					<if condition="sp_auth_check(sp_get_current_admin_id(),'portal/AdminVideoManage/index')">
+					<a class="btn btn-small btn-info" href="javascript:openapp('{:U('Content/AdminVideoManage/index')}','index_videolist','视频管理');" title="视频管理">
+						<i class="fa fa-film"></i>
+					</a>
+					</if>
+					<if condition="sp_auth_check(sp_get_current_admin_id(),'Content/AdminMusicManage/index')">
+					<a class="btn btn-small btn-info" href="javascript:openapp('{:U('Content/AdminMusicManage/index')}','index_musiclist','音乐管理');" title="音乐管理">
+						<i class="fa fa-music"></i>
+					</a>
+					</if>
+					<if condition="sp_auth_check(sp_get_current_admin_id(),'Content/AdminImageManage/index')">
+					<a class="btn btn-small btn-info" href="javascript:openapp('{:U('Content/AdminImageManage/index')}','index_imagelist','涂鸦管理');" title="涂鸦管理">
+						<i class="fa fa-image"></i>
+					</a>
+					</if>
 
 					<if condition="sp_auth_check(sp_get_current_admin_id(),'admin/setting/clearcache')">
 					<a class="btn btn-small btn-danger" href="javascript:openapp('{:U('admin/setting/clearcache')}','index_clearcache','清除缓存');" title="清除缓存">

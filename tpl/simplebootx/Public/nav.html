@@ -1,57 +1,113 @@
-{:hook('body_start')}
-<div class="navbar navbar-fixed-top" >
-   <div class="navbar-inner">
-     <div class="container">
-       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-       </a>
-       <a class="brand" href="__ROOT__/"><img src="__TMPL__Public/images/logo.png"/></a>
-       <div class="nav-collapse collapse" id="main-menu">
-       	<?php
-			$effected_id="";
-		  	$filetpl="<a href='\$href' target='\$target'>\$label</a>";
-		  	$foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' data-toggle='dropdown'>\$label <b class='caret'></b></a>";
-		  	$ul_class="dropdown-menu" ;
-		  	$li_class="" ;
-		  	$style="nav";
-		  	$showlevel=6;
-		  	$dropdown='dropdown';
-		  	echo sp_get_menu("main",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown);
-		?>
-		
-		<ul class="nav pull-right" id="main-menu-user">
-			<li class="dropdown user login">
-	            <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
-	            <img src="__TMPL__/Public/images/headicon.png" class="headicon"/>
-	            <span class="user-nicename"></span><b class="caret"></b></a>
-	            <ul class="dropdown-menu pull-right">
-	               <li><a href="{:u('user/center/index')}"><i class="fa fa-user"></i> &nbsp;个人中心</a></li>
-	               <li class="divider"></li>
-	               <li><a href="{:u('user/index/logout')}"><i class="fa fa-sign-out"></i> &nbsp;退出</a></li>
-	            </ul>
-          	</li>
-          	<li class="dropdown user offline">
-	            <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
-	           		<img src="__TMPL__/Public/images/headicon.png" class="headicon"/>登录<b class="caret"></b>
-	            </a>
-	            <ul class="dropdown-menu pull-right">
-	               <li><a href="{:U('api/oauth/login',array('type'=>'sina'))}"><i class="fa fa-weibo"></i> &nbsp;微博登录</a></li>
-	               <li><a href="{:U('api/oauth/login',array('type'=>'qq'))}"><i class="fa fa-qq"></i> &nbsp;QQ登录</a></li>
-	               <li><a href="{:u('user/login/index')}"><i class="fa fa-sign-in"></i> &nbsp;登录</a></li>
-	               <li class="divider"></li>
-	               <li><a href="{:u('user/register/index')}"><i class="fa fa-user"></i> &nbsp;注册</a></li>
-	            </ul>
-          	</li>
-		</ul>
-		<div class="pull-right">
-        	<form method="post" class="form-inline" action="{:U('portal/search/index')}" style="margin:18px 0;">
-				 <input type="text" class="" placeholder="Search" name="keyword" value="{:I('get.keyword')}"/>
-				 <input type="submit" class="btn btn-info" value="Go" style="margin:0"/>
-			</form>
-		</div>
-       </div>
-     </div>
-   </div>
- </div>
+  <nav class="websiteNav">
+        <div class="clearboth range navsubbox">
+            <div class="navbox">
+                <div class="logobox">
+                    <img src="__TMPL__Public/images/logo1.png" alt="">
+                </div>
+                <ul class="navul">
+                   <!--  <li>首页</li>
+                    <li>街舞</li>
+                    <li>涂鸦</li>
+                    <li>MC</li>
+                    <li>Beatbox</li> -->
+                    <foreach name="navData" item="vo">
+                        <li><a href="{:U($vo['href'])}">{$vo['label']}</a></li>
+                    </foreach>
+                </ul>
+            </div>
+            <div class="loginAndRebox">
+                <form action="javascript:void(0);" method="post" id="searchForm">
+                     <input type="text" name="keywords" value="{$keywords}"  class="keywords" id="keywords" placeholder='按enter搜索'>
+                </form>
+                <php>$userData = sp_get_current_user();
+                    $imgurl = sp_get_user_avatar_url($userData['avatar']);
+                </php>
+                <if condition="empty($userData) eq true">
+                    <div class="loginbox loginsubbox">
+                             <img src="__TMPL__Public/images/login.png" height="35px" width="35px" style="  vertical-align:bottom;"  alt="">
+                        <span>未登录</span>
+                        <ul class="navlbox">
+                            <li><a href="{:u('user/login/index',array('type'=>1))}">登录</a></li>
+                            <li><a href="{:u('user/Register/index',array('type'=>2))}">注册</a></li>
+                        </ul>
+                    </div>
+                </if>
+                <if condition="empty($userData) neq true">
+                    <div class="registerbox loginsubbox loginbox">
+                        <if condition=" empty($imgurl) eq true">
+                              <img src="__TMPL__Public/images/headicon.png" height="35px" width="35px" style="  vertical-align:bottom;"  alt="">
+                        </if>
+                        <if condition=" empty($imgurl) neq true">
+                            <img src="{$imgurl}" height="35px" width="35px" style="  vertical-align:bottom;"  alt="">
+                        </if>
+                        <php>
+                            $name = !empty($userData['user_nicename'])?$userData['user_nicename']:$userData['user_login'];
+                        </php>
+                        <span class="userNamespan">{$name}</span>
+                        <ul class="navlbox">
+                            <li><a href="{:u('user/center/index')}">个人中心</a></li>
+                            <li><a href="{:u('user/index/logout')}">退出</a></li>
+                        </ul>
+                    </div>
+                </if>
+            </div>
+        </div>
+    </nav>
+    <script>
+    var keywordsText =false;
+    $(function(){
+
+        $("#keywords").on("keyup",function(){
+            keywordsText = true;
+        });
+        $(window).on("keyup",function(e){
+            if(e.keyCode==13){
+                if(keywordsText){
+                    var keywordVal = $("#keywords").val();
+                    window.location.href = "{:U('Content/Search/index')}&keywords="+keywordVal;
+                }
+                // if($(".keywords").val()!=false)$("#searchForm").submit();
+                // return false;
+                // alert("gg");
+            }
+        });
+
+    });
+
+    function toSubmit(){
+        return true;
+    }
+
+         $(window).on('scroll',function(){
+             var WindowScrollTop = $(window).scrollTop();
+
+            /*导航条的缩放*/
+            if (WindowScrollTop > 50) {
+                $('.websiteNav').css({ "height": "60px", "position": "fixed", "background-color": "rgba(0,0, 0,0.8)","z-index":"99999" });
+                $('.navul').css("line-height", "52px");
+                $('.loginsubbox').css({"top":"23px"});
+                $('.keywords').css({"top":"28px"});
+              
+            } else {
+                $('.websiteNav').css({ "height": "90px", "position": "ababsolute", "background-color": "rgba(0, 0, 0, 0.6)"});
+                $('.navul').css("line-height", "80px");
+                $('.loginsubbox,.keywords').css({"top":"50px"});
+                $('.keywords').css({"top":"55px"});
+            }
+                    
+                
+           
+        });
+        /*登录注册滑动事件*/
+         $('.loginsubbox').mouseover(function(){
+                    $('.navlbox').slideDown();
+                }).mouseleave(function(){
+                    $('.navlbox').slideUp();
+                });
+            
+              $('.navul li').on('mouseover', function () {
+            $(this).addClass('animated tada');
+        }).on('mouseout', function () {
+            $(this).removeClass('animated tada');
+        });
+    </script>

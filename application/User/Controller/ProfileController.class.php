@@ -18,6 +18,7 @@ class ProfileController extends MemberbaseController {
 		$userid=sp_get_current_userid();
 		$user=$this->users_model->where(array("id"=>$userid))->find();
 		$this->assign($user);
+        $this->assign('userNavtype',2);
     	$this->display();
     }
     
@@ -44,6 +45,7 @@ class ProfileController extends MemberbaseController {
     	$userid=sp_get_current_userid();
     	$user=$this->users_model->where(array("id"=>$userid))->find();
     	$this->assign($user);
+        $this->assign('userNavtype',3);
     	$this->display();
     }
     
@@ -101,6 +103,7 @@ class ProfileController extends MemberbaseController {
     	$userid=sp_get_current_userid();
 		$user=$this->users_model->where(array("id"=>$userid))->find();
 		$this->assign($user);
+        $this->assign('userNavtype',4);
     	$this->display();
     }
     

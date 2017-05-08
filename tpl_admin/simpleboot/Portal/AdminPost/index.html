@@ -23,7 +23,7 @@
 			</div>
 		</form>
 		<form class="J_ajaxForm" action="" method="post">
-			<div class="table-actions">
+			<!-- <div class="table-actions">
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/listorders')}">排序</button>
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/check',array('check'=>1))}" data-subcheck="true">审核</button>
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/check',array('uncheck'=>1))}" data-subcheck="true">取消审核</button>
@@ -33,7 +33,7 @@
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/recommend',array('unrecommend'=>1))}" data-subcheck="true">取消推荐</button>
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/delete')}" data-subcheck="true" data-msg="你确定删除吗？">删除</button>
 				<button class="btn btn-primary btn-small J_articles_move" type="button">批量移动</button>
-			</div>
+			</div> -->
 			<table class="table table-hover table-bordered table-list">
 				<thead>
 					<tr>
@@ -103,7 +103,7 @@
 					</tr>
 				</tfoot>
 			</table>
-			<div class="table-actions">
+			<!-- <div class="table-actions">
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/listorders')}">排序</button>
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/check',array('check'=>1))}" data-subcheck="true">审核</button>
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/check',array('uncheck'=>1))}" data-subcheck="true">取消审核</button>
@@ -113,7 +113,7 @@
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/recommend',array('unrecommend'=>1))}" data-subcheck="true">取消推荐</button>
 				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminPost/delete')}" data-subcheck="true" data-msg="你确定删除吗？">删除</button>
 				<button class="btn btn-primary btn-small J_articles_move" type="button">批量移动</button>
-			</div>
+			</div> -->
 			<div class="pagination">{$Page}</div>
 
 		</form>
@@ -131,7 +131,7 @@
 		}, 2000);
 		$(function() {
 			setCookie("refersh_time", 0);
-			Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+			/*Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
 				//批量移动
 				$('.J_articles_move').click(
 						function(e) {
@@ -162,7 +162,7 @@
 										width : "80%"
 									});
 						});
-			});
+			});*/
 		});
 	</script>
 </body>

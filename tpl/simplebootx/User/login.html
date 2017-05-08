@@ -1,75 +1,268 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>{$site_name}</title>
-<meta name="keywords" content="{$site_seo_keywords}" />
-<meta name="description" content="{$site_seo_description}">
-<meta name="author" content="ThinkCMF">
-<tc_include file="Public:head" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="__TMPL__Public/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__TMPL__Public/css/use.css">
+    <link rel="stylesheet" type="text/css" href="__TMPL__Public/css/nav.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/animate.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="__TMPL__Public/css/login.css">
+    <title>Hiphoplife</title>
 </head>
-
-<body class="body-white">
+<body>
 	<tc_include file="Public:nav" />
+	<php>
+		echo "<script>
+			$('.websiteNav').css({
+				'z-index':'999',
+				'background-color':'rgba(0,0,0,0.7)'
+			});
+			$('.loginbox').hide();
+		</script>";
+	</php>
+    <div class="loginbg">
+    	<!-- 登录框 -->
+        	<div class="loginoutbox">
+        		            <div class="imagebox">
+        		                <img src="__TMPL__Public/images/05.png" width="300px" alt="">
+        		                <h3>生活，我有我的态度</h3>
+        		            </div>
+        		            <div class="loginPagebox">
+        		                <form id="loginForm" action="javascript:void(0)">
+        		                    <h2>登录账号</h2>
+        		                    <div class="inputbox">
+        		                          <input type="text" name="username" id="loginUsername" placeholder="请输入账号">
+        		                    </div>
+        		                   <div class="inputbox">
+        		                       <input type="password" name="password" id="loginUserPass" placeholder="请输入密码"> 
+        		                   </div>
+        		                   <div class="inputbox clearboth">
+        		                   <input type="text" name="verify" placeholder="请输入验证" id="loginVerify" style="width: 188px;float: left;">{:sp_verifycode_img('length=4&font_size=15&width=100&height=40&charset=1234567890','id="verify_img1"')}
+        		                   <style>
+        		                   	.verify_img{
+        		                   		float: right;
+        		                   		margin-top: 10px;
+        		                   	}
+        		                   </style>
+        		                   </div>
+        		                   <div class="inputbox checked" >
+        		                       <input type="checkbox" name="terms" value="1" value="1">我同意
+        		                       <a href="">网站内容服务条框</a>
+        		                   </div>
+        		                   <div class="inputbox" >
+        		                       <input type="submit" value="登录" id="Lsubmit">
+        		                   </div>
+        		                </form>
+        		                <div class="otherway">
+        		                    <div class="registerbox"><a href="javascript:void(0)" onclick="doregister()">现在注册</a></div>
+        		                    <div class="findpwd"><a href="">找回密码</a></div>
+        		                </div>
+        		            </div>
+        		        </div>
+	<!-- 注册框 -->
 
-	<div class="container tc-main">
-		<div class="row">
-			<div class="span6 offset3">
-				<h2 class="text-center">用户登录</h2>
-				<form class="form-horizontal J_ajaxForms" action="{:U('user/login/dologin')}" method="post">
-					<div class="control-group">
-						<label class="control-label" for="input_username">账号</label>
-						<div class="controls">
-							<input type="text" id="input_username" name="username" placeholder="请输入用户名或者邮箱" class="span3">
-						</div>
-					</div>
+	<div class="registetoutbox clearboth">
+		
+		<div class="registerpagebox">
+			<form action="javascript:void(0)" id="registerForm">
+				<h2>注册账号</h2>
+				<div class="inputbox">
+        			<input type="text" name="username" placeholder="请输入用户名">
+        		</div>
+        		<div class="inputbox">
+        			<input type="email" name="email" placeholder="请输入邮箱">
+        		</div>
+        		<div class="inputbox">
+        			<input type="password" name="password" placeholder="请输入密码">
+        		</div>
+        		<div class="inputbox">
+        			<input type="password" name="repassword" placeholder="请确认密码">
+        		</div>
+        		<div class="inputbox clearboth">
+        			<input type="text" name="verify" placeholder="请输入验证" style="width: 188px;float: left;">{:sp_verifycode_img('length=4&font_size=15&width=100&height=40&charset=1234567890','id="verify_img2"')}
+        		                   <style>
+        		                   	.verify_img{
+        		                   		float: right;
+        		                   		margin-top: 10px;
+        		                   	}
+        		                   </style>
+        		</div>
+        		<div class="inputbox checked" >
+        		                       <input type="checkbox" name="terms" value="1" value="1">我同意
+        		                       <a href="">网站内容服务条框</a>
+        		                   </div>
+        		<div class="inputbox">
+        			<input type="submit" name="submit" value="加入我们" id="Rsubmit">
+        		</div>
 
-					<div class="control-group">
-						<label class="control-label" for="input_password">密码</label>
-						<div class="controls">
-							<input type="password" id="input_password" name="password" placeholder="请输入密码" class="span3">
-						</div>
-					</div>
-
-					<div class="control-group">
-						<label class="control-label" for="input_verify">验证码</label>
-						<div class="controls">
-							<input type="text" id="input_verify" name="verify"  placeholder="请输入验证码" class="span3">
-							{:sp_verifycode_img('length=4&font_size=15&width=100&height=35&charset=1234567890')}
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="input_repassword"></label>
-						<div class="controls">
-							<label class="checkbox persistent"><input type="checkbox" name="terms" value="1">我同意
-								<a href="#">网站内容服务条款</a></label>
-						</div>
-					</div>
-
-					<div class="control-group">
-						<label class="control-label" for="input_repassword"></label>
-						<div class="controls">
-							<button class="btn btn-primary J_ajax_submit_btn" type="submit">确定</button>
-						</div>
-					</div>
-
-					<div class="control-group">
-						<label class="control-label" for="input_repassword"></label>
-						<div class="controls">
-							<ul class="inline">
-								<li><a href="{:U('user/register/index')}">现在注册</a></li>
-								<li><a href="{:U('user/login/forgot_password')}">忘记密码</a></li>
-							</ul>
-						</div>
-					</div>
-				</form>
-			</div>
+			</form>
 		</div>
-
-		<tc_include file="Public:footer" />
-
+		<div class="registerimgbox">
+			<img src="__TMPL__Public/images/05.png" alt="">
+			<h3>生活，你的态度是什么</h3>
+		</div>
+		<div class="otherway">
+        	<div class="registerbox">
+        		<a href="javascript:void(0)" onclick="dologin()">现在登录</a>
+        	</div>
+       		<div class="findpwd">
+       		<a href="">找回密码</a>
+       		</div>
+        </div>
 	</div>
-	<!-- /container -->
 
-	<tc_include file="Public:scripts" />
+
+    </div>
+    <div class="returnData">
+    	<h4>信息</h4>
+    	<div class="returnDataInfo">
+    		
+    	</div>
+    	<!-- <input type="button" value="确定" class="returnDatabtn" onclick="closeReturbox()"> -->
+    </div>
+
+    <tc_include file="Public:footer" />
+    <script>
+    var registerTime = true;
+    	<if condition="$type eq 1">
+		    	$('.loginoutbox').show().addClass("animated bounceInLeft");
+	    </if>
+	     <if condition="$type eq 2">
+	    		$('.registetoutbox').show().addClass("animated bounceInRight");
+	    </if>
+    	function doregister(){
+    		$('.loginoutbox').removeClass("animated bounceInLeft").addClass("animated bounceOutLeft");
+    		setTimeout(function(){
+    			$('.loginoutbox').css({"display":"none"}).removeClass("animated bounceOutLeft");
+    			setTimeout(function(){
+    				$('.registetoutbox').show().addClass("animated bounceInRight");
+    			},100);
+    		},450);
+    	}
+
+    	function dologin(){
+    		$('.registetoutbox').removeClass("animated bounceInRight").addClass("animated bounceOutRight");
+    		setTimeout(function(){
+    			$('.registetoutbox').css({"display":"none"}).removeClass("animated bounceOutRight");
+    			setTimeout(function(){
+    				$('.loginoutbox').show().addClass("animated bounceInLeft");
+    			},100);
+    		},450);
+    	}
+
+    	function closeReturbox(){
+    		$('.returnData').hide();
+    	}
+
+        function returnDataBoxAction(){
+             $('.returnData').show().addClass("animated bounce");
+                            setTimeout(function(){
+                                closeReturbox();
+                                // window.location.reload();
+                                $('#verify_img1').trigger("click");
+
+                            },1500)
+        }
+
+    	/*表单提交，提交方式是post ajax*/
+
+    	$(function(){
+    		// 登录表单提交
+    		$('#loginForm').submit(function(){
+                if($("#loginUsername").val()==''){
+                    $('.returnDataInfo').html("用户名不能为空");
+                    returnDataBoxAction();
+                    return false;
+                }else if($("#loginUserPass").val()==''){
+                    $('.returnDataInfo').html("密码不能为空");
+                    returnDataBoxAction();
+                    return false;
+                }else if($("loginVerify").val()==''){
+                    $('.returnDataInfo').html("验证码不能为空");
+                    returnDataBoxAction();
+                    return false;
+                }
+    			$.ajax({
+    				url:"{:U('user/login/dologin')}",
+    				type:"POST",
+    				data:$('#loginForm').serialize(),
+    				success:function(data){
+    					// console.log(data);
+    					if(data.status==1){
+    						$('.returnData h4').css({
+    							'background':' #114fad url(__TMPL__Public/images/success.png)no-repeat 16px center',
+    							'background-size': '1.2em'
+    						});
+    						$('.returnDataInfo').html("登录成功");
+    						$('.returnData').show().addClass("animated bounce");
+    						setTimeout(function(){
+    							window.location.href= "__ROOT__";
+    						},600)
+
+    						
+    					}else{
+    						$('.returnDataInfo').html(data.content);
+    						$('.returnData').show().addClass("animated bounce");
+    						setTimeout(function(){
+    							closeReturbox();
+    							// window.location.reload();
+    							$('#verify_img1').trigger("click");
+
+    						},1500)
+
+    						
+    					}
+    				}
+    			});
+    		});
+
+    		//注册表单提交
+    		$('#registerForm').submit(function(){
+    			if(registerTime){
+                    $.ajax({
+                        url:"{:U('user/Register/doregister')}",
+                        type:"POST",
+                        data:$('#registerForm').serialize(),
+                        success:function(data){
+                            // console.log(data);
+                            if(data.status==1){
+
+                                $('.returnData h4').css({
+                                    'background':' #114fad url(__TMPL__Public/images/success.png)no-repeat 16px center',
+                                    'background-size': '1.2em'
+                                });
+                                $('.returnDataInfo').html("注册成功，欢迎加入");
+                                $('.returnData').show().addClass("animated bounce");
+                                setTimeout(function(){
+                                    window.location.href= "__ROOT__";
+                                },600);
+                                
+                            }else{
+                                $('.returnDataInfo').html(data.content);
+                                $('.returnData').show().addClass("animated bounce");
+                                setTimeout(function(){
+                                    closeReturbox();
+                                    // window.location.reload();
+                                    $('#verify_img2').trigger("click");
+                                },1500)
+
+                                
+                            }
+                        }
+                    });
+                    registerTime = false;
+                    setTimeout(" registerTime = true",2000);
+                }else{
+                    $('.returnDataInfo').html("点一次就行");
+                    $('.returnData').show().addClass("animated bounce");
+                }
+    		});
+
+    	});
+
+    </script>
 </body>
 </html>

@@ -3,45 +3,52 @@ namespace Comment\Controller;
 use Common\Controller\MemberbaseController;
 class CommentController extends MemberbaseController{
 	
-	protected $comments_model;
+	protected $commentsModel;
+	protected $usersModel;
 	
 	function _initialize() {
 		parent::_initialize();
-		$this->comments_model=D("Common/Comments");
+		$this->commentsModel=D("Common/Comments");
+		$this->usersModel =D("Users");
 	}
 	
 	function index(){
 		$uid=sp_get_current_userid();
 		$where=array("uid"=>$uid);
 		
-		$count=$this->comments_model->where($where)->count();
+		$count=$this->commentsModel->where($where)->count();
 		
 		$page=$this->page($count,20);
 		$page->setLinkWraper("li");
 		
-		$comments=$this->comments_model->where($where)
+		$comments=$this->commentsModel->where($where)
 		->order("createtime desc")
 		->limit($page->firstRow . ',' . $page->listRows)
 		->select();
 		
-		echo $uid;
+		// echo $uid;
+		$this->assign("userNavtype",5);
 		$this->assign("pager",$page->show("default"));
 		$this->assign("comments",$comments);
 		$this->display(":index");
 	}
 	
 	function post(){
+		// $this->display(":index");
 		/* if($_SESSION['_verify_']['verify']!=I("post.verify")){
 			$this->error("验证码错误！");
 		} */
 		
 		if (IS_POST){
 			
+			// print_r($_POST);
 			$post_table=sp_authcode($_POST['post_table']);
+
 			
 			$_POST['post_table']=$post_table;
 			
 			$url=parse_url(urldecode($_POST['url']));
+			// var_dump($url);
 			$query=empty($url['query'])?"":"?{$url['query']}";
 			$url="{$url['scheme']}://{$url['host']}{$url['path']}$query";
 
@@ -50,8 +57,7 @@ class CommentController extends MemberbaseController{
 			if(isset($_SESSION["user"])){//用户已登陆,且是本站会员
 				$uid=$_SESSION["user"]['id'];
 				$_POST['uid']=$uid;
-				$users_model=M('Users');
-				$user=$users_model->field("user_login,user_email,user_nicename")->where("id=$uid")->find();
+				$user=$this->usersModel->field("user_login,user_email,user_nicename")->where("id=$uid")->find();
 				$username=$user['user_login'];
 				$user_nicename=$user['user_nicename'];
 				$email=$user['user_email'];
@@ -65,9 +71,9 @@ class CommentController extends MemberbaseController{
 				$_POST['status']=1;
 			}
 			
-			if ($this->comments_model->create()){
+			if ($this->commentsModel->create()){
 				$this->check_last_action(intval(C("COMMENT_TIME_INTERVAL")));
-				$result=$this->comments_model->add();
+				$result=$this->commentsModel->add();
 				if ($result!==false){
 					
 					//评论计数
@@ -82,12 +88,36 @@ class CommentController extends MemberbaseController{
 					$post_table_model->create(array("last_comment"=>time()));
 					$post_table_model->where(array($pk=>intval($_POST['post_id'])))->save();
 					
-					$this->ajaxReturn(sp_ajax_return(array("id"=>$result),"评论成功！",1));
+					$newCommentData = $this->commentsModel->where(['id'=>$result])->select()[0];
+					$thisUserData = $this->usersModel->field("id,user_login,user_nicename,avatar")->where(['id'=>$newCommentData['uid']])->select()[0];
+					$thisUserData['avatar'] = sp_get_user_avatar_url($thisUserData['avatar']);
+					if(empty($thisUserData['avatar'])){
+						$thisUserData['avatar'] ='/hiphoplife/tpl/simplebootx/Public/images/headicon.png';
+					}
+					$thisUserData['url'] =U('user/index/index',['id'=>$thisUserData['id']]);
+					// var_dump(expression)
+					// $this->ajaxReturn(sp_ajax_return(array("id"=>$result),"content"=>"评论成功！",1));
+					$this->ajaxReturn([
+						'status'=>1,
+						'content'=>'评论成功',
+						'data'=>$newCommentData,
+						'userData'=>$thisUserData
+						]);
 				} else {
-					$this->error("评论失败！");
+					// $this->error("评论失败！");
+
+					$this->ajaxReturn([
+						'status'=>-1,
+						'content'=>'评论失败'
+						]);
+
 				}
 			} else {
-				$this->error($this->comments_model->getError());
+				// $this->error($this->commentsModel->getError());
+				$this->ajaxReturn([
+					'status'=>-2,
+					'content'=>$this->commentsModel->getError()
+					]);
 			}
 		}
 		

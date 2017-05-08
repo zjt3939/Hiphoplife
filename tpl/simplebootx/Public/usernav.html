@@ -1,8 +1,36 @@
-<div class="list-group">
-	<a class="list-group-item" href="{:u('user/profile/edit')}"><i class="fa fa-list-alt"></i> 修改资料</a>
-	<a class="list-group-item" href="{:u('user/profile/password')}"><i class="fa fa-lock"></i> 修改密码</a>
-	<a class="list-group-item" href="{:u('user/profile/avatar')}"><i class="fa fa-user"></i> 编辑头像</a>
-	<a class="list-group-item" href="{:u('user/profile/bang')}"><i class="fa fa-exchange"></i> 绑定账号</a>
-	<a class="list-group-item" href="{:u('user/favorite/index')}"><i class="fa fa-star-o"></i> 我的收藏</a>
-	<a class="list-group-item" href="{:u('comment/comment/index')}"><i class="fa fa-comments-o"></i> 我的评论</a>
+<style>
+	div#usernav {
+	    padding: 5px 0px;
+	    border-bottom: 1px solid #ccc;
+	    text-align: center;
+	}
+	
+	div#usernav a {
+	      background: #eaeaea;
+	    /* border: 1px solid #ddd; */
+	    padding: 5px 10px;
+	    display: inline;
+	    color: #111;
+	    margin: 0px 20px;
+	    /* position: relative; */
+	    top: 1px
+	}
+	.choosedA{
+		border: 1px solid #ccc;
+    	border-bottom: 0px;
+    	position: relative;
+    	border-radius: 5px 5px 0px 0px;
+	}
+	
+
+</style>
+
+<div class="list-group" id="usernav">
+	<a class="list-group-item <if condition='$userNavtype eq 1'>choosedA</if>" id="userCenter" href="{:u('user/center/index')}"><i class="fa fa-list-alt" ></i> 个人中心</a>
+	<a class="list-group-item <if condition='$userNavtype eq 2'>choosedA</if>" id="changeData" href="{:u('user/profile/edit')}"><i class="fa fa-list-alt" ></i> 修改资料</a>
+	<a class="list-group-item <if condition='$userNavtype eq 3'>choosedA</if>" id="changePassword" href="{:u('user/profile/password')}"><i class="fa fa-lock"></i> 修改密码</a>
+	<a class="list-group-item <if condition='$userNavtype eq 4'>choosedA</if>" id="changeImage" href="{:u('user/profile/avatar')}"><i class="fa fa-user"></i> 编辑头像</a>
+<!-- 	<a class="list-group-item" href="{:u('user/profile/bang')}"><i class="fa fa-exchange"></i> 绑定账号</a> -->
+<!-- 	<a class="list-group-item" href="{:u('user/favorite/index')}"><i class="fa fa-star-o"></i> 我的收藏</a> -->
+	<a class="list-group-item <if condition='$userNavtype eq 5'>choosedA</if>" id="MyComment" href="{:u('comment/comment/index')}"><i class="fa fa-comments-o"></i> 我的评论</a>
 </div>

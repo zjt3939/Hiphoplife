@@ -7,6 +7,7 @@
 		protected $userModel;
 		protected $videoCategoryModel;
 		protected $videoGatherModel;
+		// private $commentModel;
 
 
 		function _initialize(){
@@ -15,10 +16,12 @@
 			$this->userModel = M("Users");
 			$this->videoCategoryModel = D("Common/VideoCategory");
 			$this->videoGatherModel = M("videoGather");
+			// $this->commentModel = M('Comments');
 		}
 
 
 		public function index(){
+			
 			$p =1;
 			// var_dump(I('param.p'));
 			!empty(I('param.p'))&& $p=I('param.p');
@@ -114,8 +117,8 @@
 				empty(I('post.url'))&& $url!==false&&$_POST['url'] = $url;
 				empty(I('post.keywords'))&& $this->error('关键字不能为空');
 				$video =I('post.');
-				$video['smeta']['thumb'] =sp_asset_relative_url($_POST['smeta']['thumb']);
-				$video['smeta'] =json_encode($video['smeta']);
+				$video['smeta']=sp_asset_relative_url($_POST['smeta']['thumb']);
+				// $video['smeta'] =json_encode($video['smeta'],true);
 				$_POST = $video;
 				$create = $this->videoModel->create();
 				if($create){
@@ -153,8 +156,7 @@
 				empty(I('post.keywords'))&& $this->error('关键字不能为空');
 				empty(I('post.detail'))&& $this->error('关键字不能为空');
 				$video =I('post.');
-				$video['smeta']['thumb'] =sp_asset_relative_url($_POST['smeta']['thumb']);
-				$video['smeta'] =json_encode($video['smeta']);
+				$video['smeta'] =sp_asset_relative_url($_POST['smeta']['thumb']);
 				$_POST = $video;
 				$create = $this->videoModel->create();
 				if($create){

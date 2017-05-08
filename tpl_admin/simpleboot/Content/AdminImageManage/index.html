@@ -1,0 +1,65 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="javascript:;">所有涂鸦</a></li>
+			<li><a href="{:U('AdminImageManage/add',array('term'=>empty($term['term_id'])?'':$term['term_id']))}" target="_self">添加涂鸦</a></li>
+		</ul>
+		<form class="J_ajaxForm" action="" method="post">
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>作者</th>
+						<!-- <th width="500">详细内容</th> -->
+						<th>修改时间</th>
+						<th>关键字</th>
+						<th width="60px">点击量</th>
+						<th width="60px">状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<php>
+				$status=array("1"=>"已审核","0"=>"未审核");
+				$top_status=array("1"=>"已置顶","0"=>"未置顶");
+				$recommend_status=array("1"=>"已推荐","0"=>"未推荐");
+				</php>
+				<foreach name="ImageData" item="do">
+				<tr>
+						<td>{$do['name']}</td>
+						<td>{$do['author']}</td>
+						<!-- <td width="500">{$do['detail']}</td> -->
+						<td>{$do['last_update_time']}</td>
+						<td>{$do['keywords']}</td>
+						<td>{$do['hit']}</td>
+						<php>
+							if($do['status']==1){
+								$do['status']='正常';
+							}
+						</php>
+						<td>{$do['status']}</td>
+						<td>
+						<a href="{:U('AdminImageManage/edit',array('id'=>$do['id']))}">修改</a> | 
+						<a href="{:U('AdminImageManage/delete',array('id'=>$do['id']))}" class="J_ajax_del">删除</a></td>
+				</tr>
+				</foreach>
+				<tfoot>
+					<tr>
+						<th>名称</th>
+						<th>作者</th>
+						<!-- <th width="500">详细内容</th> -->
+						<th>修改时间</th>
+						<th>关键字</th>
+						<th width="60px">点击量</th>
+						<th width="60px">状态</th>
+						<th>操作</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="pagination">{$Page}</div>
+
+		</form>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+</body>
+</html>

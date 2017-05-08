@@ -5,15 +5,29 @@
 namespace User\Controller;
 use Common\Controller\HomeBaseController;
 class RegisterController extends HomeBaseController {
+    private $navModel;
+    function _initialize(){
+        $this->navModel = M('Nav');
+    }
+    
 	
 	function index(){
-		$this->display(":register");
+        $navdata = $this->navModel->field('label,href')->where(['cid'=>1,'parentid'=>0,'status'=>1])->order('listorder asc')->select();
+        $this->assign('navData',$navdata);
+        $type=I("param.type");
+        $this->assign("type",$type);
+		$this->display(":login");
 	}
 	
 	function doregister(){
     	
 		if(!sp_check_verify_code()){
-    		$this->error("验证码错误！");
+    		// $this->error("验证码错误！");
+            $this->ajaxReturn ( [ 
+                    'status' => - 5,
+                    'content' => "验证码错误！" 
+            ] );
+
     	}
     	
     	$users_model=M("Users");
@@ -29,24 +43,41 @@ class RegisterController extends HomeBaseController {
     			 
     	);
     	if($users_model->validate($rules)->create()===false){
-    		$this->error($users_model->getError());
+    		// $this->error($users_model->getError());
+            $this->ajaxReturn([
+                'status'=>-8,
+                'content'=>$users_model->getError()
+                ]);
     	}
+
     	
     	extract($_POST);
     	//用户名需过滤的字符的正则
     	$stripChar = '?<*.>\'"';
     	if(preg_match('/['.$stripChar.']/is', $username)==1){
-    		$this->error('用户名中包含'.$stripChar.'等非法字符！');
+    		// $this->error('用户名中包含'.$stripChar.'等非法字符！');
+            $this->ajaxReturn([
+                'status'=>-1,
+                'content'=>'用户名中包含'.$stripChar.'等非法字符！'
+                ]);
     	}
     	
     	$banned_usernames=explode(",", sp_get_cmf_settings("banned_usernames"));
     	
     	if(in_array($username, $banned_usernames)){
-    		$this->error("此用户名禁止使用！");
+    		// $this->error("此用户名禁止使用！");
+            $this->ajaxReturn([
+                'status'=>-2,
+                'content'=>"此用户名禁止使用！"
+                ]);
     	}
     	
     	if(strlen($password) < 5 || strlen($password) > 20){
-    		$this->error("密码长度至少5位，最多20位！");
+    		// $this->error("密码长度至少5位，最多20位！");
+            $this->ajaxReturn([
+                'status'=>-3,
+                'content'=>"密码长度至少5位，最多20位！"
+                ]);
     	}
     	
 
@@ -63,9 +94,17 @@ class RegisterController extends HomeBaseController {
     	}
     	$users_model=M("Users");
     	$result = $users_model->where($where)->count();
-    	if($result || $uc_checkemail<0 || $uc_checkusername<0){
-    		$this->error("用户名或者该邮箱已经存在！");
-    	}else{
+    	if($result || $uc_checkemail<0 ){
+            $this->ajaxReturn([
+                'status'=>-4,
+                'content'=>"用户名已经存在！"
+            ]);
+    	}elseif($result|| $uc_checkusername<0){
+             $this->ajaxReturn([
+                'status'=>-4,
+                'content'=>"该邮箱已经存在！"
+            ]);
+        }else{
     		$uc_register=true;
     		if($ucenter_syn){
     	
@@ -98,17 +137,34 @@ class RegisterController extends HomeBaseController {
     				if($need_email_active){
     					$this->_send_to_active();
     					unset($_SESSION['user']);
-    					$this->success("注册成功，激活后才能使用！",U("user/login/index"));
+    					// $this->success(,);
+                         $this->ajaxReturn([
+                            'status'=>2,
+                            'content'=>"注册成功，激活后才能使用！",
+                            'url'=>U("user/login/index")
+                        ]);
     				}else {
-    					$this->success("注册成功！",__ROOT__."/");
+    					// $this->success(,__ROOT__."/");
+                         $this->ajaxReturn([
+                            'status'=> 1,
+                            'content'=>"注册成功！"
+                        ]);
     				}
     					
     			}else{
-    				$this->error("注册失败！",U("user/register/index"));
+    				// $this->error(,U("user/register/index"));
+                     $this->ajaxReturn([
+                        'status'=>-6,
+                        'content'=>"注册失败！"
+                    ]);
     			}
     	
     		}else{
-    			$this->error("注册失败！",U("user/register/index"));
+    			// $this->error(,U("user/register/index"));
+                 $this->ajaxReturn([
+                'status'=>-7,
+                'content'=>"注册失败！"
+            ]);
     		}
     	
     	}

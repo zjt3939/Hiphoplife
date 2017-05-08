@@ -4,7 +4,7 @@
 <title>{$site_name}</title>
 <meta name="keywords" content="{$site_seo_keywords}" />
 <meta name="description" content="{$site_seo_description}">
-<meta name="author" content="ThinkCMF">
+<link rel="stylesheet" href="__TMPL__Public/css/userCenter.css">
 <tc_include file="Public:head" />
 <style type="text/css">
 .tab-content{overflow: visible;}
@@ -20,17 +20,19 @@
 </head>
 <body class="body-white" id="top">
 	<tc_include file="Public:nav" />
-
-		<div class="container tc-main">
+	<div class="UserCenterOutBox">
+        <div class="range clearboth">
+            <div class="fillempty"></div>
+            <div class="container tc-main">
                 <div class="row">
                     <div class="span3">
 	                    <tc_include file="Public:usernav"/>
                     </div>
                     <div class="span9">
                            <div class="tabs">
-                               <ul class="nav nav-tabs">
+                               <!-- <ul class="nav nav-tabs">
                                    <li class="active"><a href="#one" data-toggle="tab"><i class="fa fa-user"></i> 修改头像</a></li>
-                               </ul>
+                               </ul> -->
                                <div class="tab-content">
                                    <div class="tab-pane active" id="one">
                                    		<if condition="empty($avatar)">
@@ -52,9 +54,12 @@
                     </div>
                 </div>
 
-		<tc_include file="Public:footer" />
+	
 
 	</div>
+        </div>
+    </div>
+		
 	<!-- /container -->
 
 	<tc_include file="Public:scripts" />
@@ -118,5 +123,6 @@
 		return false;
 	}
 </script>
+	<tc_include file="Public:footer" />
 </body>
 </html>

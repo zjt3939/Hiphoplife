@@ -2,7 +2,7 @@
 namespace Common\Controller;
 use Common\Controller\AppframeController;
 class HomeBaseController extends AppframeController {
-	
+	private $navModel;
 	public function __construct() {
 		$this->set_action_success_error_tpl();
 		parent::__construct();
@@ -10,6 +10,8 @@ class HomeBaseController extends AppframeController {
 	
 	function _initialize() {
 		parent::_initialize();
+		$this->navModel = D("Common/nav");
+		$this->getnavdata();
 		$site_options=get_site_options();
 		$this->assign($site_options);
 		$ucenter_syn=C("UCENTER_ENABLED");
@@ -203,4 +205,8 @@ class HomeBaseController extends AppframeController {
 	}
 	
 	
+	private function getnavdata(){
+		$navdata = $this->navModel->field('label,href')->where(['cid'=>1,'parentid'=>0,'status'=>1])->order('listorder asc')->select();
+        $this->assign('navData',$navdata);
+	}
 }

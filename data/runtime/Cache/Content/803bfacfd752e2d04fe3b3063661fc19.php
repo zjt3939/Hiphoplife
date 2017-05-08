@@ -80,7 +80,7 @@ var GV = {
 			<table class="table table-hover table-bordered table-list">
 				<thead>
 					<tr>
-						<th>名称</th>
+						<th width="100px">名称</th>
 						<th>详细内容</th>
 						<th>url</th>
 						<th>修改时间</th>
@@ -94,7 +94,7 @@ var GV = {
 				</thead>
 				<?php $status=array("1"=>"已审核","0"=>"未审核"); $top_status=array("1"=>"已置顶","0"=>"未置顶"); $recommend_status=array("1"=>"已推荐","0"=>"未推荐"); ?>
 				<?php if(is_array($VideoData)): foreach($VideoData as $key=>$do): ?><tr>
-						<td><?php echo ($do['name']); ?></td>
+						<td width="100px" style="overflow: hidden;"><?php echo ($do['name']); ?></td>
 						<td><?php echo ($do['detail']); ?></td>
 						<td><?php echo ($do['url']); ?></td>
 						<td><?php echo ($do['last_update_time']); ?></td>
@@ -110,7 +110,7 @@ var GV = {
 				</tr><?php endforeach; endif; ?>
 				<tfoot>
 					<tr>
-						<th>名称</th>
+						<th width="100px">名称</th>
 						<th>详细内容</th>
 						<th>url</th>
 						<th>修改时间</th>

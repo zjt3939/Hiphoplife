@@ -1,0 +1,363 @@
+/*icon使用类*/
+.videoicon
+{
+    background: url('../../Public/images/video.png')no-repeat center center;
+    background-size: 40px;
+}
+.Pageicon
+{
+    background: url('../../Public/images/page.png')no-repeat center center;
+    background-size: 40px;
+}
+.Gathericon
+{
+    background: url('../../Public/images/gather.png')no-repeat center center;
+    background-size: 40px;
+}
+
+/*****************/
+
+.strDanceOutBox
+{
+    font-family: 'STXingkai';
+
+    position: relative;
+    z-index: 0;
+
+    overflow: hidden;
+
+    width: 100%;
+    /*height: 130%;*/
+    min-height: 900px;
+    /*max-height: 1020px;*/
+
+    background: #fff url('../../Public/images/loginbg06.jpg')no-repeat center center;
+    /*background: #fff url('world.png')no-repeat center center;*/
+    background-size: cover;
+}
+/* .strDanceOutBox::after{
+    display: block;
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    left:0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: -1;
+} */
+/*.leftSideContentbox{
+    margin-top: 80px;
+    width: 19%;
+    height: 100vh;
+    float: left;
+    border:1px solid red;
+}*/
+.videoShowbox
+{
+    float: left;
+
+    width: 80%;
+    height: 100%;
+    margin-top: 90px;
+    /*border: 1px solid red;*/
+}
+.rightBestBox
+{
+    float: right;
+
+    width: 19%;
+    height: 100%;
+    margin-top: 120px;
+    /*border:1px solid #fff;*/
+}
+.selectBox
+{
+    width: 92%;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 30px;
+
+    text-align: center;
+
+    border: 1px solid #857650;
+    border-radius: 30px;
+    background-color: #121212;
+}
+
+.selectBox > div
+{
+    width: 100%;
+    margin: 0 auto;
+}
+ul.selectUl
+{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.selectUl li
+{
+    float: left;
+
+    width: 20%;
+    height: 50px;
+    margin-left: 4%;
+    padding-bottom: 5px;
+}
+/* .allData{
+    border-bottom: 3px solid  #c19a05;
+} */
+
+.selectBox a
+{
+    font-weight: bolder;
+    line-height: 60px;
+
+    display: block;
+    float: left;
+
+    color: #c19a05;
+}
+
+form#selectForm label
+{
+    font-weight: bolder;
+    line-height: 60px;
+
+    display: block;
+    float: left;
+
+    color: #c19a05;
+}
+
+form#selectForm select
+{
+    display: block;
+    float: left;
+
+    width: 200px;
+    height: 30px;
+    /* line-height: 60px;*/
+    margin-top: 15px;
+    margin-left: 15px;
+
+    color: #e0d1d1;
+    border: 1px solid #857650;
+    /*line-height: 30px;*/
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, .9);
+}
+.listVideoBox
+{
+    width: 100%;
+    /*text-align: center;*/
+}
+.strDanceVideoul
+{
+    max-width: 92%;
+    margin: 5px auto;
+}
+.strDanceVideoul > li
+{
+    position: relative;
+
+    display: none;
+    float: left;
+    overflow: hidden;
+
+    width: 31.5%;
+    height: 170px;
+    margin-top: 20px;
+    margin-left: 1.5%;
+
+    border: 1px solid #857650;
+    border-radius: 3px;
+    background: #121212;
+}
+.strDanceVideoul > li > a
+{
+    display: block;
+}
+.strDanceVideoul > li img
+{
+    width: 100%;
+}
+.strDanceVideoul > li i
+{
+    position: absolute;
+    top: 33%;
+    left: 44%;
+
+    display: block;
+
+    width: 40px;
+    height: 40px;
+}
+
+
+
+.strDanceVideoul > li p
+{
+    line-height: 40px;
+
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+
+    color: #ddd;
+    background-color: rgba(0,0,0,.8);
+}
+.strDanceVideoul > li span
+{
+    /*border: 1px solid #fff;*/
+    font-size: .8em;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    overflow: hidden;
+
+    height: 20px;
+    /*width: 60px;*/
+    padding-right: 5px;
+    padding-left: 25px;
+
+    color: #968761;
+    background: rgba(0,0,0,.8) url('../../Public/images/eyew.png')no-repeat  5px center ;
+    background-size: 16px;
+}
+
+/* 右侧 */
+.rightBestBox
+{
+    float: right;
+
+    width: 19%;
+    height: 100%;
+    margin-top: 120px;
+    /*border:1px solid #fff;*/
+}
+.rightBestStrbox
+{
+    margin-top: 87px;
+}
+.rightBestStrDanceUl
+{
+    width: 100%;
+    padding-bottom: 10px;
+
+    border-radius: 0 0 4px 4px;
+    /*border: 1px solid #444;*/
+    background-color: #eaeaea;
+}
+.rightBestStrbox h3
+{
+    line-height: 40px;
+
+    height: 40px;
+    padding-left: 10px;
+
+    color: #857650;
+    border-bottom: 1px solid #ccc;
+    /*border: 1px solid #444;*/
+    border-left: 6px solid #0000fe;
+    background-color: #eaeaea;
+}
+
+.BestStrDanceli
+{
+    line-height: 40px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #d0d0d0;
+}
+.BestStrDanceli:hover
+{
+    transition: background-color .6s ease-out;
+
+    background-color: #857650;
+}
+.BestStrDanceli:hover a
+{
+    color: #fff;
+}
+.BestStrDanceli:hover span
+{
+    transition: background-color .6s ease-out;
+
+    color: #0000fe;
+    /*background-color:#fad50c;*/
+    background-color: #fff;
+}
+
+.BestStrDanceli span
+{
+    line-height: 30px;
+
+    display: block;
+    float: left;
+
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
+
+    text-align: center;
+
+    color: #fff;
+    border-radius: 50%;
+    background-color: #857650;
+}
+.BestStrDanceli a
+{
+    display: block;
+    float: left;
+
+    padding-left: 10px;
+
+    color: #999;
+}
+.PageList
+{
+    display: none;
+
+    width: 90%;
+
+    /*border: 1px solid #fff;*/
+    margin: 10px auto;
+
+    text-align: center;
+}
+.PageList a,
+.PageList span
+{
+    line-height: 30px;
+
+    display: inline-block;
+
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    /*float: left;*/
+    padding: 0 10px;
+
+    color: #111;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #eaeaea;
+}
+.PageList span
+{
+    color: #eaeaea;
+    border: 1px solid #777;
+    border-radius: 2px;
+    background-color: #888;
+}

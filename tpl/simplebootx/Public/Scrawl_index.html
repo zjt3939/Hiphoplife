@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hiphoplife</title>
+	<script src="__TMPL__Public/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__TMPL__Public/css/use.css">
+    <link rel="stylesheet" type="text/css" href="__TMPL__Public/css/nav.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/animate.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/footer.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/scrawl.css">
+</head>
+<body>
+<tc_include file="Public:nav" />
+
+<div class="OutsideBox">
+	<div class="range clearboth scrawlRange" >
+		<div class="fillempty"></div>
+		<block name="InnerContentBox"></block>	
+
+		<!-- 涂鸦首页 -->
+		<if condition="$scrawlType eq 1">
+			<div class="NewPostScrawlBox">
+				<div class="boxTitle NewPostTitle"><span>文章报道</span><a href="{:U('ScrawlPost')}" class="mostPostA">更多</a></div>
+				<ul class="ScrawlBoxUl clearboth">
+					<foreach name="NewScrawPostlData" item="no">
+						<li>
+							<a href="" class="ScrawlA">
+								<div  class="scrawlImgbox">
+									<img src="{$no['smeta']}">
+								</div>
+								
+								
+								<p class="scrawl tenpxtop" style="border-bottom: 1px solid #ccc;padding-bottom: 10px;">{$no['post_title']}</p>
+								<div class="showDetail ">
+									<span class="doLike">{$no['post_like']}</span>
+									<span class="commentSum">{$no['comment_count']}</span>
+									<span class="hitSum">{$no['post_hits']}</span>
+			
+								</div>
+							</a>
+						</li>
+					</foreach>
+				</ul>
+			</div>
+				<div class="scrawlAd">
+				<img src="__TMPL__Public/images/bk.jpg" alt="">
+			</div>
+			<div class="hitsScrawlBox">
+				<div class="boxTitle hotTitle"><span>热门作品</span></div>
+				<ul class="ScrawlBoxUl clearboth">
+					<foreach name="HitScrawlData" item="ho">
+						<li>
+							<a href="" class="ScrawlA">
+								<div  class="scrawlImgbox">
+									<img src="{$ho['smeta']}" alt="">
+								</div>
+								<p class="scrawl">{$ho['name']}</p>
+								<div class="showDetail">
+									<span class="doLike">{$ho['image_like']}</span>
+									<span class="hitSum">{$ho['hit']}</span>
+			
+								</div>
+								<div class="scrawlAuthor">
+									作者:{$ho['author']}
+								</div>
+							</a>
+						</li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="scrawlAd">
+				<img src="__TMPL__Public/images/bk.jpg" alt="">
+			</div>
+			<div class="goodsScrawlBox ">
+				<div class="boxTitle GoodTitle"><span>精选作品</span></div>
+				<ul class="ScrawlBoxUl clearboth">
+					<foreach name="GoodScrawlData" item="ho">
+						<li>
+							<a href="" class="ScrawlA">
+								<div  class="scrawlImgbox">
+									<img src="{$ho['smeta']}" alt="">
+								</div>
+								<p class="scrawl">{$ho['name']}</p>
+								<div class="showDetail">
+									<span class="doLike">{$ho['image_like']}</span>
+									<span class="hitSum">{$ho['hit']}</span>
+			
+								</div>
+								<div class="scrawlAuthor">
+									作者:{$ho['author']}
+								</div>
+							</a>
+						</li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="scrawlAd">
+				<img src="__TMPL__Public/images/bk.jpg" alt="">
+			</div>
+			<div class="newScrawlBox ">
+				<div class="boxTitle NewTitle"><span>最新作品</span></div>
+				<div class="newScrawlInnerBox">
+					<ul class="ScrawlBoxUl clearboth">
+						<foreach name="NewScrawlData" item="ho">
+							<li>
+								<a href="" class="ScrawlA">
+									<div  class="scrawlImgbox">
+										<img src="{$ho['smeta']}" alt="">
+									</div>
+									<p class="scrawl">{$ho['name']}</p>
+									<div class="showDetail">
+										<span class="doLike">{$ho['image_like']}</span>
+										<span class="hitSum">{$ho['hit']}</span>
+				
+									</div>
+									<div class="scrawlAuthor">
+										作者:{$ho['author']}
+									</div>
+								</a>
+							</li>
+						</foreach>
+					</ul>
+
+				</div>
+				<div class="newScrawlbtnbox">
+					<img src="__TMPL__Public/images/load.gif" class="loading" alt="">
+					<input type="button" value="继续添加" class="keepAddBtn">
+				</div>
+			</div>
+		</if>
+		<!-- 涂鸦首页结束 -->
+
+		<if condition="$scrawlType eq 2">
+			<div class="NewPostScrawlBox ">
+				<div class="boxTitle NewPostTitle"><span>涂鸦文章</span></div>
+				<div class="newScrawlInnerBox">
+					<ul class="ScrawlBoxUl clearboth">
+						<foreach name="NewScrawPostlData" item="no">
+							<li>
+								<a href="" class="ScrawlA">
+									<div  class="scrawlImgbox">
+										<img src="{$no['smeta']}">
+									</div>
+									
+								
+									<p class="scrawl tenpxtop" style="border-bottom: 1px solid #ccc;padding-bottom: 10px;">{$no['post_title']}</p>
+										<div class="showDetail">
+										<span class="doLike">{$no['post_like']}</span>
+										<span class="commentSum">{$no['comment_count']}</span>
+										<span class="hitSum">{$no['post_hits']}</span>
+				
+									</div>
+								</a>
+							</li>
+						</foreach>
+					</ul>
+
+				</div>
+				<div class="newScrawlbtnbox">
+					<img src="__TMPL__Public/images/load.gif" class="loading" alt="">
+					<input type="button" value="继续添加" class="keepAddBtn">
+				</div>
+			</div>
+		</if>
+		
+	</div>
+</div>
+<if condition="!empty($scrawlType) eq true"></if>
+	<script>
+	var keepAddTime = true;
+	var AddIndex =2;
+	$(function(){
+		// $(".scrawlRange").show();
+		//页面初始化动画
+		$(".ScrawlBoxUl li").show().addClass("animated bounceIn");
+
+		//鼠标事件动画
+		$(".ScrawlA").mouseover(function(){
+			$(this).find('img').addClass("animated pulse");
+		}).mouseleave(function(){
+	         $(this).find('img').removeClass('animated pulse');
+	    });
+
+
+	    // 动态添加数据
+	    $(".keepAddBtn").click(function(){
+	    	$(".keepAddBtn").hide();
+	    	$(".loading").show();
+	    	//如果keepAddTime为true,则可以获取数据，不然就提示
+	    	if(keepAddTime){
+	    		//-------点击执行事件
+	    		// console.log(11);
+	    		<if condition="$scrawlType eq 1">
+		    		$.ajax({
+		    			url:"{:U('keepAdd')}&scrawlType=1&p="+AddIndex,
+		    			type:"get",
+		    			success:function(data){
+		    				// console.log(data.data.length);
+
+		    				if(data.status==1){
+		    					AddIndex++;
+		    					$(".loading").hide();
+		    					//整理获取到的数据，将数据分离出来使用
+		    					var uldata = '<ul class="ScrawlBoxUl ScrawlBoxUl'+AddIndex+' clearboth"></ul>';
+		    					var lidata ='';
+		    					var ulobj=$(".newScrawlInnerBox").append(uldata).find('.ScrawlBoxUl'+AddIndex);
+		    					for(var i = 0;i<data.data.length;i++){
+		    						ulobj.append('<li><a href="" class="ScrawlA"><div  class="scrawlImgbox"><img src="'+data.data[i].smeta+'" alt=""></div><p class="scrawl">'+data.data[i].name+'</p><div class="showDetail"><span class="doLike">'+data.data[i].image_like+'</span><span class="hitSum">'+data.data[i].hit+'</span></div><div class="scrawlAuthor">作者:'+data.data[i].author+'</div></a></li>');
+		    					}
+		    					$(".ScrawlBoxUl"+AddIndex+" li").show().addClass("animated bounceIn");
+		    					$(".ScrawlA").mouseover(function(){
+								$(this).find('img').addClass("animated pulse");
+								}).mouseleave(function(){
+							         $(this).find('img').removeClass('animated pulse');
+							    });
+		    					if(data.data.length<10){
+		    						$(".newScrawlbtnbox").html("已经到最后了");
+		    					}else{
+		    						$(".keepAddBtn").show();
+		    					}
+		    				}else if(data.status==0){
+		    					$(".loading").hide();
+		    					$(".newScrawlbtnbox").html(data.data);
+		    				}else{
+		    					$(".loading").hide();
+		    					$(".newScrawlbtnbox").html("数据加载错误");
+		    				}
+		    			}
+		    		});
+	    		</if>
+	    		<if condition="$scrawlType eq 2">
+		    		$.ajax({
+		    			url:"{:U('keepAdd')}&scrawlType=2&p="+AddIndex,
+		    			type:"get",
+		    			success:function(data){
+		    				// console.log(data.data.length);
+
+		    				if(data.status==1){
+		    					AddIndex++;
+		    					$(".loading").hide();
+		    					//整理获取到的数据，将数据分离出来使用
+		    					var uldata = '<ul class="ScrawlBoxUl ScrawlBoxUl'+AddIndex+' clearboth"></ul>';
+		    					var lidata ='';
+		    					var ulobj=$(".newScrawlInnerBox").append(uldata).find('.ScrawlBoxUl'+AddIndex);
+		    					for(var i = 0;i<data.data.length;i++){
+		    						ulobj.append('<li><a href="" class="ScrawlA"><div  class="scrawlImgbox"><img src="'+data.data[i].smeta+'" alt=""></div><div class="showDetail"><span class="doLike">'+data.data[i].post_like+'</span><span class="hitSum">'+data.data[i].post_hits+'</span></div><p class="scrawl">'+data.data[i].post_title+'</p></a></li>');
+		    					}
+		    					$(".ScrawlBoxUl"+AddIndex+" li").show().addClass("animated bounceIn");
+		    					$(".ScrawlA").mouseover(function(){
+								$(this).find('img').addClass("animated pulse");
+								}).mouseleave(function(){
+							         $(this).find('img').removeClass('animated pulse');
+							    });
+		    					if(data.data.length<10){
+		    						$(".newScrawlbtnbox").html("已经到最后了");
+		    					}else{
+		    						$(".keepAddBtn").show();
+		    					}
+		    				}else if(data.status==0){
+		    					$(".loading").hide();
+		    					$(".newScrawlbtnbox").html(data.data);
+		    				}else{
+		    					$(".loading").hide();
+		    					$(".newScrawlbtnbox").html("数据加载错误");
+		    				}
+		    			}
+		    		});
+	    		</if>
+	    		//
+	    		
+	    		keepAddTime = false;
+	    		//限制每5秒钟只能点击一次
+	    		setTimeout("keepAddTime=true",2000);
+
+	    	}else{
+	    		$(".loading").hide();
+	    		$(".keepAddBtn").show();
+
+	    		//如果点击频率过快则给予提示
+	    		// alert("频率过快");
+	    	}
+	    });
+	});
+
+	</script>
+<block name="script"></block>
+
+<tc_include file="Public:footer" />
+</body>
+</html>

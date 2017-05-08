@@ -1,20 +1,36 @@
-<br><br><br>
-<!-- Footer
-      ================================================== -->
-      <hr>
-{:hook('footer')}
-      <div id="footer">
-        <div class="links">
-        <php>$links=sp_getlinks();</php>
-        <foreach name="links" item="vo">
-          <a href="{$vo.link_url}" target="{$vo.link_target}">{$vo.link_name}</a>
-        </foreach>
-        </div>
-        <p>
-        Made by <a href="http://www.thinkcmf.com">ThinkCMF</a>
-        Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" rel="nofollow" target="_blank">Apache License v2.0</a>.<br/>
-        Based on <a href="http://getbootstrap.com/2.3.2/" target="_blank">Bootstrap</a>.  Icons from <a href="http://fortawesome.github.com/Font-Awesome/" target="_blank">Font Awesome</a>
-        </p>
-      </div>
-      <div id="backtotop"><i class="fa fa-arrow-circle-up"></i></div>
-      {$site_tongji}
+ <footer>
+		<div class="parting_line"></div>
+		<div class="footer_box">
+			<div class="range">
+				<ul class="footer_contant clearboth">
+					<li>
+						<div class="erwei"><img src="__TMPL__/Public/images/erwei.jpg" width="100" height="100" alt="">
+						</div>
+						<ul>
+							<li>本站微信</li>
+							<li>微信二维码扫描</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li>友情链接</li>
+							<li><a href="">街舞酱</a></li>
+							<li><a href="">街舞爱好者</a></li>
+							<li><a href="">今日头条</a></li>
+						</ul>
+						<ul>
+							<li>关于我们</li>
+							<li><a href="">了解我们</a></li>
+							<li><a href="">联系我们</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li>联系方式</li>
+							<li class="phone_number">18814182530</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</footer>

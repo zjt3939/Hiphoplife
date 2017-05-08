@@ -1,0 +1,80 @@
+* {
+            margin: 0px;
+            padding: 0px;
+            font-family:  "微软雅黑";
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100vh;
+            min-height: 780px;
+            min-width: 1500px;
+            max-width: 2300px;
+        }
+         /*清除浮动*/
+        .clearboth:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        /*范围*/
+        .range {
+            width: 80%;
+            max-width:1350px;
+            margin: 0 auto;
+            /*border: 1px solid #fff;*/
+        }
+        /*倾斜*/
+        .skew {
+            -webkit-transform: skew(-14deg, 0deg);
+            -moz-transform: skew(-14deg, 0deg);
+            -ms-transform: skew(-14deg, 0deg);
+            -o-transform: skew(-14deg, 0deg);
+            transform: skew(-14deg, 0deg);
+        }
+        /*反倾斜*/
+        .skew-inner {
+            display: block;
+            -webkit-transform: skew(14deg, 0deg);
+            -moz-transform: skew(14deg, 0deg);
+            -ms-transform: skew(14deg, 0deg);
+            -o-transform: skew(14deg, 0deg);
+            transform: skew(14deg, 0deg);
+        }
+        .outWrite{
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+     }
+        li{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+        }
+
+    .underLine::after{
+        content: "";
+        display: block;
+        width: 100%;
+        height: 4px;
+        position: relative;
+        bottom: 5px;
+        /*z-index: 3;*/
+        background-color:#c19a05;
+    }
+/*填充*/
+.fillempty{
+    width: 100%;
+    height: 100px;
+}
+/**/
+.UserCenterOutBox{
+    width: 100%;
+    min-height: 700px;
+    /*height: 700px;*/
+    /*height: 100vh;*/
+    background: url(../../Public/images/bg.jpg);
+    
+
+}

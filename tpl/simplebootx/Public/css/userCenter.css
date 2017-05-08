@@ -1,0 +1,75 @@
+.container{
+	background-color: #eaeaea;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px;
+    width: 99%;
+}
+.tab-content{
+	width: 55%;
+	margin:0px auto;
+	padding: 30px 5px;
+	/*text-align: center;*/
+}
+.span2 {
+	min-height: 200px;
+    display: block;
+    float: left;
+    margin-right: 30px;
+}
+
+.control-group{
+	margin-top: 10px;
+}
+.control-label{
+	margin-right: 30px;
+	display: block;
+    float: left;
+    width: 20%;
+    text-align: right;
+    /*line-height: 40px;*/
+}
+.controls input[type="password"],.controls input[type="text"]{
+	width: 300px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 5px;
+	height: 30px;
+}
+.controls select{
+	height: 40px;
+	width: 310px;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+}
+.controls textarea{
+	width: 70%;
+	max-height: 400px;
+	min-height: 300px;
+	resize:none;
+	padding: 5px;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+}
+/*.controls{
+	text-align: center;
+}*/
+.controls .btn,.confirm_avatar_btn{
+	display: inline-block;
+	height: 35px;
+	line-height: 35px;
+	padding: 0px 30px;
+	background-color: #111;
+	border: none;
+	color: #eaeaea;
+	border-radius: 3px;
+}
+/*input[type="file"]{
+	padding: 0px 20px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #222;
+	color: #eee;
+	border-radius: 3px;
+	border:none;
+}*/

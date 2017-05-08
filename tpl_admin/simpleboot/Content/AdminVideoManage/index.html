@@ -47,7 +47,7 @@
 			<table class="table table-hover table-bordered table-list">
 				<thead>
 					<tr>
-						<th>名称</th>
+						<th width="100px">名称</th>
 						<th>详细内容</th>
 						<th>url</th>
 						<th>修改时间</th>
@@ -66,7 +66,7 @@
 				</php>
 				<foreach name="VideoData" item="do">
 				<tr>
-						<td>{$do['name']}</td>
+						<td width="100px" style="overflow: hidden;">{$do['name']}</td>
 						<td>{$do['detail']}</td>
 						<td>{$do['url']}</td>
 						<td>{$do['last_update_time']}</td>
@@ -87,7 +87,7 @@
 				</foreach>
 				<tfoot>
 					<tr>
-						<th>名称</th>
+						<th width="100px">名称</th>
 						<th>详细内容</th>
 						<th>url</th>
 						<th>修改时间</th>

@@ -1,0 +1,554 @@
+
+/*视频*/
+.videobox
+{
+    position: relative;
+    z-index: -3;
+
+    overflow: hidden;
+
+    width: 100%;
+    min-height: 100vh;
+
+    text-align: center;
+    /*background: #000 url('../images/index.png')no-repeat center center;
+            background-size: 100% auto;*/
+
+    background-color: #fff;
+}
+
+.videoContent
+{
+    position: absolute;
+    z-index: -1;
+    /*height: 100%;*/
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.videobox:after
+{
+    position: absolute;
+    z-index: 4;
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    content: '';
+
+    background-color: rgba(0, 0, 0, .25);
+}
+.websitepurport
+{
+    position: absolute;
+    z-index: 99999;
+    top: 27vh;
+    left: 33%;
+    /*border: 2px red solid;*/
+
+    display: none;
+
+    width: 500px;
+    height: 400px;
+
+    color: red;
+}
+/*视频结束*/
+
+/*首页内容 hotmain*/
+.hotmain
+{
+    /* background:#000 url('../images/bg04.png')no-repeat;
+            background-position: center center;
+            background-size:cover;*/
+    overflow: hidden;
+
+    width: 100%;
+    height: 100vh;
+    min-height: 1000px;
+    max-height: 1000px;
+    padding-bottom: 50px;
+}
+.paddingbox1,
+.paddingbox2,
+.paddingbox3
+{
+    position: relative;
+
+    width: 100%;
+    height: 50px;
+}
+.paddingbox1,
+.paddingbox3
+{
+    background-color: #fff;
+}
+.paddingbox2
+{
+    background-color: #000;
+}
+.paddingbox1:after,
+.paddingbox2:after,
+.paddingbox3:after
+{
+    position: absolute;
+    z-index: 0;
+
+    display: block;
+
+    content: '';
+}
+.paddingbox1:after,
+.paddingbox3:after
+{
+    border-top: 200px solid #fff;
+    border-right: 2300px solid transparent;
+}
+.paddingbox2:after
+{
+    border-top: 200px solid #000;
+    border-right: 2300px solid transparent;
+}
+/*.hotmain:after{
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            content: '';
+            z-index: 88;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.1);
+        }*/
+
+.Contentbox
+{
+    margin-top: 60px;
+}
+.hotVideobox
+{
+    position: relative;
+    z-index: 999;
+}
+.hotvideoname{
+    text-align: left;
+}
+.ContentTitle
+{
+    text-align: center;
+}
+.ContentTitle > img
+{
+    width: 300px;
+    margin-top: 30px;
+}
+.ContentTitle > p
+{
+    font-size: 1.5em;
+
+    position: relative;
+    top: -15px;
+
+    color: #fff;
+}
+
+.vcontentul
+{
+    width: 100%;
+    /*border: 1px solid red;*/
+}
+
+.vcontentul li
+{
+    position: relative;
+
+    float: left;
+    overflow: hidden;
+
+    width: 23%;
+    /*border: 1px solid #fff;*/
+    height: 380px;
+    margin-left: 1.5%;
+    padding-top: 15px;
+}
+.vcontentul > li:hover img
+{
+    height: 420px;
+    /*animation: imgBigger 1s ease;*/
+
+    transition: height .5s ease-out;
+}
+/* @keyframes imgBigger{
+            from{ height:380px;}
+            to{height: 450px;}
+        }*/
+.vcontentul li:nth-of-type(1)
+{
+    width: 47.5%;
+    /*border:1px solid blue;*/
+}
+.vcontentul li:not(:first-child)::after
+{
+    position: absolute;
+    top: 48%;
+    left: 46%;
+
+    display: block;
+
+    width: 50px;
+    height: 50px;
+
+    content: '';
+
+    background: url('../images/video.png')no-repeat center center;
+    background-size: 50px;
+}
+
+.vlibox
+{
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+    vertical-align: middle;
+
+    background-color: #fff;
+}
+.vimgbox
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 380px;
+}
+.vlibox img
+{
+    /*width: 100%;
+             a*/
+    height: 380px;
+}
+.vcontentul li:nth-of-type(1) .vimgbox
+{
+    width: 100%;
+    height: 100%;
+}
+.vcontentul li:nth-of-type(1) .vimgbox img
+{
+    width: 100%;
+    height: auto;
+}
+
+.controls
+{
+    position: absolute;
+    top: -40%;
+    left: -40%;
+
+    display: block;
+
+    width: 32px;
+    height: 32px;
+
+    background: url('../images/video.png')no-repeat center center;
+    background-size: 32px;
+}
+
+.videourl
+{
+    display: block;
+
+    width: 100%;
+
+    cursor: pointer;
+}
+.videoName
+{
+    position: absolute;
+    bottom: 20px;
+    left: -10px;
+
+    width: 70%;
+    height: 50px;
+    padding: 10px 20px;
+
+    color: #000;
+    background-color: #f0f0f0;
+    /*display: none;*/
+}
+
+.videoNamebox
+{
+    display: none;
+}
+.videoName p
+{
+    line-height: 1.2em;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.videoName span
+{
+    font-size: .8em;
+
+    display: block;
+    float: left;
+
+    margin-top: 5px;
+    padding-left: 4px;
+
+    color: #0f0f0f;
+}
+.videoName i,
+.videoName c,
+.newVideoName j,
+.newVideoName c,
+.ScrawNameinfo p > j,
+.ScrawNameinfo p > c
+{
+    font-size: .7em;
+
+    display: block;
+    float: left;
+
+    margin-left: 2px;
+    padding-left: 18px;
+}
+.videoName i
+{
+    padding-top: 8px;
+
+    background: url('../images/messageb.png')no-repeat bottom left;
+    background-size: 16px;
+}
+.videoName c
+{
+    padding-top: 8px;
+
+    background: url('../images/eyeb.png')no-repeat bottom left;
+    background-size: 16px;
+}
+.newVideoName j
+{
+    padding-top: 2px;
+
+    background: url('../images/messagew.png')no-repeat center left;
+    background-size: 16px;
+}
+.newVideoName c
+{
+    padding-top: 2px;
+
+    background: url('../images/eyew.png')no-repeat center left;
+    background-size: 16px;
+}
+.ScrawNameinfo p > j
+{
+    padding-top: 2px;
+
+    background: url('../images/messageb.png')no-repeat center left;
+    background-size: 16px;
+}
+.ScrawNameinfo p > c
+{
+    padding-top: 2px;
+
+    background: url('../images/eyeb.png')no-repeat center left;
+    background-size: 16px;
+}
+.rankVideo
+{
+    font-size: 1.5em;
+    font-weight: bolder;
+    line-height: 40px;
+
+    position: absolute;
+    top: 14px;
+    left: 0;
+
+    width: 40px;
+    height: 40px;
+
+    text-align: center;
+
+    color: #fff;
+    background-color: #000;;
+    /*border-radius: 50%;*/
+}
+
+.sdvideo1
+{
+    width: 100%;
+    height: 380px;
+}
+
+/*
+    hotmain 2
+*/
+.newVideoul
+{
+    width: 100%;
+    padding-left: 20px;
+    /*border: 1px solid red;*/
+
+    text-align: center;
+}
+.newVideoul li
+{
+    position: relative;
+
+    float: left;
+    overflow: hidden;
+
+    width: 22%;
+    height: 220px;
+    margin: 10px 1%;
+
+    text-align: center;
+
+    border: 1px solid #000;
+    border-radius: 2px;
+    background-color: #000;
+}
+.newVideoul li > a:after
+{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 220px;
+
+    content: '';
+
+    background: rgba(0,0,0,.3) url('../images/video.png')no-repeat center center;
+    background-size: 50px;
+}
+.newVideoul > li img
+{
+    width: 100%;
+}
+.newVideoName
+{
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+
+    width: 100%;
+    padding: 10px 15px;
+
+    text-align: left;
+
+    color: #fff;
+    background-color: rgba(0,0,0,.7);
+}
+.newVideoNam p
+{
+    line-height: 1.2em;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.newVideoName > span
+{
+    font-size: .7em;
+
+    display: block;
+    float: left;
+}
+
+/*
+    
+        hotmain3
+    */
+
+.newScrawlul
+{
+    width: 100%;
+}
+.newScrawlul > li > a
+{
+    display: block;
+}
+.newScrawlul > li
+{
+    float: left;
+
+    width: 18%;
+    height: 350px;
+    margin-top: 10px;
+    margin-left: 1.4%;
+
+    cursor: pointer;
+
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 2px;
+    background-color: #eaeaea;
+}
+.Simgbox
+{
+    overflow: hidden;
+
+    width: 100%;
+    height: 250px;
+
+    text-align: center;
+}
+.Simgbox img
+{
+    width: 100%;
+    height: 250px;
+}
+
+.ScrawNameinfo
+{
+    padding: 5px 10px;
+}
+.ScrawNameinfo .ScrawName
+{
+    line-height: 1.5em;
+
+    color: #0f0f0f;
+}
+.ScrawNameinfo p
+{
+    font-size: .8em;
+    line-height: 1.5em;
+
+    padding-bottom: 5px;
+
+    color: #0f0f0f;
+    border-bottom: 1px solid #d0d0d0;
+}
+.ScrawNameinfo p > span
+{
+    font-size: .8em;
+
+    display: block;
+    float: left;
+
+    color: #0f0f0f;
+}
+.Scrawauthor
+{
+    margin-top: 10px;
+
+    color: #0f0f0f;
+}

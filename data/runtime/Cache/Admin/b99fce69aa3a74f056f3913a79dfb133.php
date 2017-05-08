@@ -144,6 +144,15 @@ right: initial !important;}
 					<?php if(sp_auth_check(sp_get_current_admin_id(),'portal/AdminPost/index')): ?><a class="btn btn-small btn-info" href="javascript:openapp('<?php echo U('portal/AdminPost/index');?>','index_postlist','文章管理');" title="文章管理">
 						<i class="fa fa-pencil"></i>
 					</a><?php endif; ?>
+					<?php if(sp_auth_check(sp_get_current_admin_id(),'portal/AdminVideoManage/index')): ?><a class="btn btn-small btn-info" href="javascript:openapp('<?php echo U('Content/AdminVideoManage/index');?>','index_videolist','视频管理');" title="视频管理">
+						<i class="fa fa-film"></i>
+					</a><?php endif; ?>
+					<?php if(sp_auth_check(sp_get_current_admin_id(),'Content/AdminMusicManage/index')): ?><a class="btn btn-small btn-info" href="javascript:openapp('<?php echo U('Content/AdminMusicManage/index');?>','index_musiclist','音乐管理');" title="音乐管理">
+						<i class="fa fa-music"></i>
+					</a><?php endif; ?>
+					<?php if(sp_auth_check(sp_get_current_admin_id(),'Content/AdminImageManage/index')): ?><a class="btn btn-small btn-info" href="javascript:openapp('<?php echo U('Content/AdminImageManage/index');?>','index_imagelist','涂鸦管理');" title="涂鸦管理">
+						<i class="fa fa-image"></i>
+					</a><?php endif; ?>
 
 					<?php if(sp_auth_check(sp_get_current_admin_id(),'admin/setting/clearcache')): ?><a class="btn btn-small btn-danger" href="javascript:openapp('<?php echo U('admin/setting/clearcache');?>','index_clearcache','清除缓存');" title="清除缓存">
 						<i class="fa fa-trash-o"></i>

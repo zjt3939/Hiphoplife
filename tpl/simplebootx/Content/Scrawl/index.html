@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hiphoplife</title>
+	<tc_include file="Public:head" />
+    <link rel="stylesheet" href="__TMPL__Public/css/scrawl.css">
+</head>
+<body>
+<tc_include file="Public:nav" />
+
+
+<div class="OutsideBox">
+	<div class="range clearboth scrawlRange" >
+		<div class="fillempty"></div>
+	
+	
+		<!-- 涂鸦首页 -->
+		<if condition="!empty($scrawlType) eq true">
+			<tc_include file="Content/scrawl/Scrawl"/>
+		</if>
+
+		<!-- Bbox页面 -->
+		<if condition="!empty($Bbox) eq true">
+			<tc_include file="Content/scrawl/Bbox"/>
+		</if>
+
+		<!-- Dj页面 -->
+		<if condition="!empty($Dj) eq true">
+			<tc_include file="Content/scrawl/Dj"/>
+		</if>
+
+		<!-- Mc页面 -->
+		<if condition="!empty($Mc) eq true">
+			<tc_include file="Content/scrawl/Mc"/>
+		</if>
+		
+		<!-- 搜索页面 -->
+		<if condition="!empty($Search) eq true">
+			<tc_include file="Content/Search"/>
+		</if>
+
+	</div>
+</div>
+
+<tc_include file="Public:footer" />
+</body>
+</html>

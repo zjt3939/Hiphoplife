@@ -48,12 +48,15 @@ class AdminPostController extends AdminbaseController {
 				}
 			}
 			$_POST['smeta']['thumb'] = sp_asset_relative_url($_POST['smeta']['thumb']);
-			 
+			
+			$type=$this->terms_model->where(['term_id'=>$_POST['term'][0]])->select()[0]['name'];
+			
 			$_POST['post']['post_date']=date("Y-m-d H:i:s",time());
 			$_POST['post']['post_author']=get_current_admin_id();
 			$article=I("post.post");
 			$article['smeta']=json_encode($_POST['smeta']);
 			$article['post_content']=htmlspecialchars_decode($article['post_content']);
+			$article['type']= $type;
 			$result=$this->posts_model->add($article);
 			if ($result) {
 				//

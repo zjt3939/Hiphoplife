@@ -5,7 +5,7 @@ class WidgetController extends Controller{
 	
 	function index($table,$post_id,$params){
 		$comment_model=D("Common/Comments");
-		$comments=$comment_model->where(array("post_table"=>$table,"post_id"=>$post_id,"status"=>1))->order("createtime ASC")->select();
+		$comments=$comment_model->where(array("post_table"=>$table,"post_id"=>$post_id,"status"=>1))->order("createtime desc")->select();
 		
 		$new_comments=array();
 		

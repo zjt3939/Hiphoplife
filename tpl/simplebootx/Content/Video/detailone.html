@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hiphoplife</title>
+	<tc_include file="Public:head" />
+    <link rel="stylesheet" href="__TMPL__Public/css/videoDetail.css">
+   
+
+</head>
+<body>
+<tc_include file="Public:nav" />
+	
+<div class="videoDetailOutbox">
+	<div class="range clearboth">
+		<div class="fillempty"></div>
+		<div class="DetailContentbox">
+
+			<div class="pagePath"><a href="{:U('Portal/index/index')}">首页</a>&nbsp;&gt;&nbsp;<a href="{:U('Content/Video/strDance')}">街舞</a>&nbsp;&gt;&nbsp;{$videoDetailData['name']}</div>
+			<h2>{$videoDetailData['name']}</h2>
+			<!-- <h2>{$videoDetailData['id']}</h2> -->
+			<div class="videoOutbox">
+				<if condition="$videoDetailData['type'] eq 0">
+                   	<iframe src="{$videoDetailData['url']}" allowtransparency="true" scrolling="no" border="0" frameborder="0" style="height: 500px;width: auto; margin: 0px auto;">]
+                   	</iframe>
+                </if>
+                <if condition="$videoDetailData['type'] eq 1">
+	                <div style="height:500px;">
+	                	<video id="sdvideo1" class="video-js vjs-big-play-centered sdvideo1" style="height:500px;width: auto;margin: 0px auto;" controls >
+	                    <source src="{$videoDetailData['url']}" type="video/mp4">
+	                    </video>
+
+	                </div>
+                </if>
+			</div>
+			<div class="videotoolbox"><span>{$videoDetailData['last_update_time']}</span> <span class="videoHits">{$videoDetailData['hit']}</span></div>
+			<div class="commentOutbox clearboth">
+				{:Comments("video",$videoDetailData['id'])}
+			</div>
+			<div class="Pagelist">
+				{$Page}
+			</div>
+	
+		</div>
+
+	</div>
+
+</div>
+
+<tc_include file="Public:footer" />
+</body>
+</html>

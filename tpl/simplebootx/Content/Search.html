@@ -1,0 +1,27 @@
+<div class="SearchOutBox clearboth">
+	<h2>"{$keywords}"搜索结果为：</h2>
+	<ul class="SearchUl">
+		<foreach name="SearchData" item="so">
+			<li>
+				<a href="{$so['url']}" class="resultUrl clearboth">
+					<p>{$so['title']}</p>
+					<div>
+						<span class="urlIcon {$so['icon']}"></span>
+						<div class="resultUrlbox">
+							<div class="urlDetail outWrite">{$so['content']}</div>
+							<i>{$so['time']}</i>
+						</div>
+				</a>
+			</li>
+		</foreach>
+	</ul>
+	<div class="SearchPageList">
+		{$Page}
+	</div>
+</div>
+<script>
+	$(function(){
+
+		$(".SearchUl li").show().addClass("animated bounceIn");
+	});
+</script>

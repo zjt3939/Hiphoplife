@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hiphoplife</title>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<tc_include file="Public:head" />
+    <link rel="stylesheet" href="__TMPL__Public/css/strDance.css">
+
+</head>
+<body>
+<tc_include file="Public:nav" />
+<div class="strDanceOutBox">
+	<div class="range clearboth">
+		<div class="videoShowbox clearboth">
+			<div class="selectBox">
+				<div class="clearboth ">
+					<ul class="selectUl clearboth">
+						<li class="clearboth"><a href="{:U('Content/Video/strDance')}" class="allData">全部视频</a></li>
+						
+						<li class="clearboth"><a href="{:U('Content/Video/strGather')}" class="gatherData ">赛事专辑</a></li>
+						<li class="clearboth"><a href="{:U('Content/Video/strCategory')}" class="categoryData ">舞种选择</a></li>
+						<li class="clearboth"><a href="{:U('Content/Video/strPost')}" class="allPostData ">全部文章</a></li>
+						<!-- <li class="clearboth">
+							<form action="" id="selectForm">
+							<label for="" class="">舞种</label>
+							<select name="" id="">
+								<option value="1">这是第一</option>
+								<option value="1">这是第一</option>
+								<option value="1">这是第一</option>
+								<option value="1">这是第一</option>
+								<option value="1">这是第一</option>
+								<option value="1">这是第一</option>
+								<option value="1">这是第一</option>
+							</select>
+						</form>
+						</li> -->
+					</ul>
+				</div>
+				
+			</div>
+			<div class="listVideoBox">
+				<ul class="clearboth strDanceVideoul">
+				<if condition="empty($strGatherData) neq true">
+					<foreach name="strGatherData" item="io">
+						<li> 
+							<a href="{:U('detailGather',['gather_id'=>$io['gather_id']])}">
+								<img src="{$io['smeta']}" alt="">
+								<i class="Gathericon"></i>
+								<p class="outWrite">{$io['gather_name']}</p>
+							</a>
+						</li>
+					</foreach>	
+				</if>
+				<if condition="empty($videoData) neq true">
+					<foreach name="videoData" item="io">
+						<li> 
+							<a href="{:U('detailone',['id'=>$io['id']])}">
+								<img src="{$io['smeta']}" alt="">
+								<i class="videoicon"></i>
+								<span>{$io['hit']}</span>
+								<p class="outWrite">{$io['name']}</p>
+							</a>
+						</li>
+					</foreach>
+				</if>
+				<if condition="empty($categoryData) neq true">
+					<foreach name="categoryData" item="io">
+						<li> 
+							<a href="{:U('OneCategory',['category_id'=>$io['category_id']])}">
+								<i class="Gathericon"></i>
+								<p class="outWrite">{$io['category_name']}</p>
+							</a>
+						</li>
+					</foreach>
+				</if>
+				<if condition="empty($postdata) neq true">
+					<foreach name="postdata" item="io">
+						<li> 
+							<a href="{:U('strPostDetail',['id'=>$io['id']])}">
+								<img src="{$io['smeta']['thumb']}" alt="">
+								<i class="Pageicon"></i>
+								<span>{$io['post_hits']}</span>
+								<p class="outWrite">{$io['post_title']}</p>
+							</a>
+						</li>
+					</foreach>
+				</if>
+				
+				</ul>
+			<div class="PageList clearboth">
+				{$Page}
+			</div>
+			</div>
+		</div>
+		<div class="rightBestBox clearboth">
+			<div class="rightBestStrbox">
+				<h3>
+					{$htitle}
+				</h3>
+					<ul class="rightBestStrDanceUl">
+					<php>
+						$bindex =1;
+					</php>
+					<if condition="!empty($HotStrData) eq true">
+						<foreach name="HotStrData" item="ho">
+							<li class="BestStrDanceli clearboth"><span>{$bindex}</span><a href="{:U('detailone',['id'=>$ho['id']])}">{$ho['name']}</a></li>
+							<php>$bindex++;</php>
+						</foreach>
+					</if>
+					<if condition="!empty($BestStrPostData) eq true">
+						<foreach name="BestStrPostData" item="ho">
+							<li class="BestStrDanceli clearboth"><span>{$bindex}</span><a href="{:U('detailone',['id'=>$ho['id']])}">{$ho['post_title']}</a></li>
+								<php>$bindex++;</php>
+						</foreach>
+					</if>
+					
+				</ul>
+			</div>
+			<!-- <div class="rightBestStrbox">
+				<h3>评论数量Top9</h3>
+					<ul class="rightBestStrDanceUl">
+					
+					<li class="BestStrDanceli clearboth"><span>1</span><a href="">Hong10 vs issei</a></li>
+					<li class="BestStrDanceli clearboth"><span>2</span><a href="">Hong10 vs issei</a></li>
+					<li class="BestStrDanceli clearboth"><span>3</span><a href="">Hong10 vs issei</a></li>
+					<li class="BestStrDanceli clearboth"><span>4</span><a href="">Hong10 vs issei</a></li>
+					<li class="BestStrDanceli clearboth"><span>5</span><a href="">Hong10 vs issei</a></li>
+					<li class="BestStrDanceli clearboth"><span>6</span><a href="">Hong10 vs issei</a></li>
+					<li class="BestStrDanceli clearboth"><span>7</span><a href="">Hong10 vs issei</a></li>
+					<li class="BestStrDanceli clearboth"><span>8</span><a href="">Hong10 vs issei</a></li>
+					<li class="BestStrDanceli clearboth"><span>9</span><a href="">Hong10 vs issei</a></li>
+				</ul>
+			</div>
+			 -->
+		</div>
+	</div>
+
+</div>
+
+<tc_include file="Public:footer" />
+</body>
+<script>
+	$('.websiteNav').css({
+		"background-color":"rgba(0,0,0,0.5)",
+		"z-index":"2"
+	});
+	$(function(){
+		// alert($(window).height());
+		$(".strDanceVideoul li").show().addClass("animated bounceIn");
+		$(".PageList").show().addClass("animated bounceIn");
+		$(".{$active}").addClass("underLine");
+	});
+
+	 $('.strDanceVideoul li').mouseover(function(){
+         $(this).find('img').addClass('animated pulse');
+         $(this).find('i').addClass('animated pulse');
+     }).mouseleave(function(){
+         $(this).find('img').removeClass('animated pulse');
+         $(this).find('i').removeClass('animated pulse');
+     });
+</script>
+</html>

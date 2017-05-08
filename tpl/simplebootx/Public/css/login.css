@@ -1,0 +1,234 @@
+.loginbg{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #fff url('../../Public/images/loginbg06.jpg')no-repeat center center;
+    /*background: #fff url('world.png')no-repeat center center;*/
+    background-size: cover;
+    font-family: "STXingkai";
+    position: relative;
+
+}
+/* .loginbg::after{
+    display: block;
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    left:0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 0;
+
+} */
+.loginoutbox{
+    width:800px;
+    height: 500px;
+    /*border: 1px solid red;*/
+    margin: 150px auto;
+    overflow: hidden;
+    border-radius: 5px;
+    /*background-color: #fff;*/
+    box-shadow: 0px 0px 84px -11px #aaa;
+    position: relative;
+    z-index: 999;
+    display: none;
+}
+.loginPagebox{
+    width: 50%;
+    height: 100%;
+    float: right;
+    /*border: 1px solid blue;*/
+}
+.imagebox{
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: rgba(10,10,220,0.85);
+    text-align: center;
+    background: url('../../Public/images/loginbg05.png')no-repeat;
+    background-size: 750px; 
+    background-position: -100px 0px; 
+    position: relative;  
+    /*box-shadow: 0px 0px 50px 5px #aaa;*/
+    box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.2);
+}
+.imagebox h3{
+    color: #fff;
+    position: absolute;
+    top: 400px;
+    left:125px;
+    font-family: arial,"Hiragino Sans GB","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;
+}
+.loginPagebox{
+    text-align: center;
+    background-color: #fff;
+    z-index: 9999;
+
+}
+.loginPagebox h2,.registerpagebox h2{
+    color:#505050;
+    margin-top: 30px;
+    margin-bottom: 20px;    
+    font-family: arial,"Hiragino Sans GB","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;
+}
+.inputbox{
+    width: 300px;
+    margin: 0px auto;
+    text-align: center;
+}
+.inputbox input[type=text],.inputbox input[type=email],.inputbox input[type=password]{
+    width: 100%;
+    padding-left: 10px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
+    border: 1px solid #eaeaea;
+}
+.checked{
+    margin-top: 20px;
+    font-size: 0.85em;
+    vertical-align: middle;
+}
+.checked input[type=checkbox]{
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    color: #008800;
+    vertical-align: middle;
+
+}
+#Lsubmit,.inputbox input[type=submit]{
+    margin:20px auto;
+    display: block;
+    border-radius: 3px;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #004fad;
+    color: #eaeaea;
+    border:none;
+    cursor: pointer;
+    
+}
+.otherway{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    cursor: pointer;
+}
+.registerbox{
+
+    width: 199px;
+    float: left;
+    border-top: 1px #eaeaea solid;
+    border-right: 1px #eaeaea solid;
+    text-align:center;
+    height: 40px;
+    line-height: 40px;
+}
+.findpwd{
+    width: 200px;
+    float: left;
+    border-top: 1px #eaeaea solid;
+    /*border-left: 1px #ddd solid;*/
+    text-align:center;    
+     height: 40px;
+    line-height: 40px;
+
+}
+.otherway a{
+    display: block;
+    color: #505050;
+}
+
+/*
+注册模块
+*/
+.registetoutbox{
+    width: 800px;
+    height: 580px;
+    margin: 150px auto;
+    overflow: hidden;
+    border-radius: 5px;
+    /*background-color: #fff;*/
+    box-shadow: 0px 0px 84px -11px #aaa;
+    position: relative;
+    z-index: 999;
+    display: none;
+}
+.registerimgbox,.registerpagebox{
+    height: 100%;
+    width: 50%;
+    float:left;
+    overflow: hidden;
+    background-color: #fff;
+    position: relative;
+}
+.registerpagebox{
+    text-align: center;
+}
+.registerimgbox>img{
+    width:300px;
+    position: absolute;
+    left: 52px;
+
+}
+.registerimgbox{
+    background: url("../../Public/images/loginbg03.jpg")no-repeat;
+    background-size: cover;
+    background-position:-130px 0px;
+     /*box-shadow: 0px 0px 50px 5px #aaa;*/
+        box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.2);
+
+}
+
+.registerimgbox h3{
+    color: #fff;
+    position: absolute;
+    top: 500px;
+    left: 120px;
+    font-family: arial,"Hiragino Sans GB","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;
+}
+
+/*返回数据弹出框*/
+.returnData{
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    width: 300px;
+    height: 100px;
+    background-color: #fff;
+    z-index: 99999;
+    border-radius: 3px;
+    display:none;
+    box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.2);
+}
+.returnData h4{
+    border-radius:  3px 3px 0px 0px;
+    text-align: left;
+    padding: 8px 38px;
+    background: #ff0000 url(../../Public/images/error.png)no-repeat 16px center;
+    background-size: 1.2em;
+    color: #fff;
+    font-weight: 300;
+}
+.returnDataInfo{
+    padding: 10px 15px;
+    text-align: center;
+}
+/*.returnDatabtn{
+    position:absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color:#114fad;
+    border:none;
+    color: #fff;
+    border-radius: 2px;
+}*/
